@@ -12,6 +12,7 @@ const AccountSchema = new Schema({
   },
   addedBy: String,
   snapshots: Array,
+  avatarURL: String,
 });
 
 module.exports = mongoose.model("Account", AccountSchema);
