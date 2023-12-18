@@ -21,3 +21,5 @@ const SnapshotSchema = new mongoose.Schema({
     }),
   },
 });
+
+module.exports = new mongoose.model("Snapshot", SnapshotSchema);
