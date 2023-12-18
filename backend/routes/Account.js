@@ -11,13 +11,16 @@ async function getAccount(account) {
 
 router.get("/", (req, res) => {
   res.send("Please request a specific account!");
+  console.log(`GET request @ /accounts/, from ${req.ip}`);
 });
 
 router.get("/:account", (req, res) => {
   getAccount(`${req.params.account}`)
     .then((account) => {
       res.send(account);
-      console.log(`Showing data for "${req.params.account}", from ${req.ip}`);
+      console.log(
+        `GET request @ /accounts/${req.params.account}, from ${req.ip}`
+      );
     })
     .catch((err) => {
       res.send(err);
