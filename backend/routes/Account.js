@@ -14,12 +14,17 @@ router.get("/", (req, res) => {
   console.log(`GET request @ /accounts/, from ${req.ip}`);
 });
 
-router.get("/:account", (req, res) => {
+router.get("/all/:account", (req,res) => {
+  res.send(`viewing all snapshots for account ${req.params.account}`);
+  console.log(`GET request @ /accounts/all/${req.params.account}, from ${req.ip}`);
+})
+
+router.get("/current/:account", (req, res) => {
   getAccount(`${req.params.account}`)
     .then((account) => {
       res.send(account);
       console.log(
-        `GET request @ /accounts/${req.params.account}, from ${req.ip}`
+        `GET request @ /accounts/current/${req.params.account}, from ${req.ip}`
       );
     })
     .catch((err) => {
