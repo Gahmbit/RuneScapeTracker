@@ -2,6 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Skill = require("./Skill");
 
+//WIP, easier finding skills this way than below
+const skillMap = {
+  attack: 0,
+  defence: 1,
+  strength: 2,
+  constitution: 3,
+  ranged: 4,
+  prayer: 5,
+  magic: 6,
+};
+
 //all below data acquired via https://apps.runescape.com/runemetrics/profile/profile?user=X&activities=20, unless stated otherwise
 const SnapshotSchema = new Schema({
   name: {
