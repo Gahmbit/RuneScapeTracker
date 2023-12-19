@@ -1,10 +1,15 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 //all below data acquired via https://apps.runescape.com/runemetrics/profile/profile?user=X&activities=20, unless stated otherwise
-const SnapshotSchema = new mongoose.Schema({
+const SnapshotSchema = new Schema({
   name: {
     type: String,
     required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
   },
   rank: String,
   totalSkill: Number,
