@@ -38,7 +38,7 @@ async function canSnap(account) {
 const takeSnapshot = (account) => {
   const snap = new Snapshot({
     name: account.name,
-    rank: account.rank,
+    rank: parseInt(account.rank),
     totalSkill: account.totalskill,
     totalExp: account.totalxp,
     combatLevel: account.combatlevel,
