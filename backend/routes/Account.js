@@ -33,8 +33,6 @@ async function canSnap(account) {
   ) {
     takeSnapshot(account);
   }
-  // if (Date.now() - latestSnap[0].timestamp >= snapshotGap) {
-  // }
 }
 
 const takeSnapshot = (account) => {
