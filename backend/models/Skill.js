@@ -7,4 +7,4 @@ const SkillSchema = new Schema({
   rank: Number,
 });
 
-module.exports = mongoose.model("Skill", SkillSchemaSchema);
+module.exports = SkillSchema;
