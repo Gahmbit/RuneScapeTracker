@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Snapshot = require("../models/Snapshot");
 require("dotenv").config({ path: __dirname + "./../vars/.env" });
 const secret = process.env.MONGO_SECRET;
+const snapshotGap = 43200000;
 
 mongoose.set("strictQuery", false);
 const connectDB = async (secret) => {
@@ -21,9 +22,22 @@ async function getAccount(account) {
   return userJSON;
 }
 
+async function canSnap(account) {
+  const latestSnap = await Snapshot.find({ name: account.name })
+    .sort({ timestamp: -1 })
+    .limit(1);
+  // await console.log(latestSnap);
+  if (
+    latestSnap[0] === undefined ||
+    Date.now() - latestSnap[0].timestamp >= snapshotGap
+  ) {
+    takeSnapshot(account);
+  }
+  // if (Date.now() - latestSnap[0].timestamp >= snapshotGap) {
+  // }
+}
+
 const takeSnapshot = (account) => {
-  //need to add logic that finds all snapshots, grabs most recent one, and compares with current time
-  //if current time - most recent snapshot is greater than 12 hours (43200000 ms), take another snapshot
   const snap = new Snapshot({
     name: account.name,
     rank: account.rank,
@@ -35,6 +49,7 @@ const takeSnapshot = (account) => {
   });
   snap.save();
   console.log(snap);
+  console.log(`Added ${snap.name} to the database at ${snap.timestamp}`);
 };
 
 router.get("/", (req, res) => {
@@ -63,7 +78,8 @@ router.get("/current/:account", (req, res) => {
         return;
       }
       res.send(account);
-      takeSnapshot(account);
+      canSnap(account);
+      // takeSnapshot(account);
       console.log(
         `GET request @ /accounts/current/${req.params.account}, from ${req.ip}`
       );
