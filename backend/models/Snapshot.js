@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Skill = require("./Skill");
+// const Skill = require("./Skill");
 
 //WIP, easier finding skills this way than below
 const skillMap = {
@@ -29,35 +29,7 @@ const SnapshotSchema = new Schema({
   combatLevel: Number,
   activities: Array,
   questPoints: Number, //acquired via https://apps.runescape.com/runemetrics/quests?user=X
-  attack: Skill,
-  defence: Skill,
-  strength: Skill,
-  constitution: Skill,
-  ranged: Skill,
-  prayer: Skill,
-  magic: Skill,
-  cooking: Skill,
-  woodcutting: Skill,
-  fletching: Skill,
-  fishing: Skill,
-  firemaking: Skill,
-  crafting: Skill,
-  smithing: Skill,
-  mining: Skill,
-  herblore: Skill,
-  agility: Skill,
-  thieving: Skill,
-  slayer: Skill,
-  farming: Skill,
-  runecrafting: Skill,
-  hunter: Skill,
-  construction: Skill,
-  summoning: Skill,
-  dungeoneering: Skill,
-  divination: Skill,
-  invention: Skill,
-  archaeology: Skill,
-  necromancy: Skill,
+  skills: Object,
 });
 
 module.exports = new mongoose.model("Snapshot", SnapshotSchema);

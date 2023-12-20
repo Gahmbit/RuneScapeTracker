@@ -36,6 +36,15 @@ async function canSnap(account) {
 }
 
 const takeSnapshot = (account) => {
+  const skillsArray = account.skillvalues;
+  const skillsObj = {};
+  skillsArray.forEach((skill) => {
+    skillsObj[skill.id] = {
+      level: skill.level,
+      xp: skill.xp,
+      rank: skill.rank,
+    };
+  });
   const snap = new Snapshot({
     name: account.name,
     rank: parseInt(account.rank),
@@ -44,6 +53,7 @@ const takeSnapshot = (account) => {
     combatLevel: account.combatlevel,
     activities: account.activities,
     //need to add skills to snapshots
+    skills: skillsObj,
   });
   snap.save();
   console.log(snap);
