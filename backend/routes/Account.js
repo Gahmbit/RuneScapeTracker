@@ -69,14 +69,14 @@ router.get("/", (req, res) => {
   console.log(`GET request @ /accounts/, from ${req.ip}`);
 });
 
-router.get("/all/:account", (req, res) => {
+router.get("/:account/all", (req, res) => {
   res.send(`viewing all snapshots for account ${req.params.account}`);
   console.log(
     `GET request @ /accounts/all/${req.params.account}, from ${req.ip}`
   );
 });
 
-router.get("/current/:account", (req, res) => {
+router.get("/:account", (req, res) => {
   getAccount(`${req.params.account}`)
     .then((account) => {
       console.log(account.name);
