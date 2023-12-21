@@ -35,6 +35,14 @@ async function canSnap(account) {
   }
 }
 
+const getSnapshots = async (account) => {
+  const mySnapshots = await Snapshot.find({name: account.name}).sort({timestamp: -1})
+  if (mySnapshots === null | mySnapshots === undefined | mySnapshots === null){
+    return `There are currently no snapshots for ${account.name}`;
+  }
+  return mySnapshots;
+}
+
 const takeSnapshot = (account) => {
   const skillsArray = account.skillvalues;
   const skillsObj = {};
@@ -70,7 +78,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:account/all", (req, res) => {
-  res.send(`viewing all snapshots for account ${req.params.account}`);
+  res.send(getSnapshots(req.params.account));
   console.log(
     `GET request @ /accounts/all/${req.params.account}, from ${req.ip}`
   );
