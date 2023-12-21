@@ -45,9 +45,13 @@ const takeSnapshot = (account) => {
       rank: skill.rank,
     };
   });
+
+  const accountRank = account.rank
+    ? parseInt(account.rank.replace(/,/g, ""))
+    : 0;
   const snap = new Snapshot({
     name: account.name,
-    rank: parseInt(account.rank.replace(/,/g, "")),
+    rank: accountRank,
     totalSkill: account.totalskill,
     totalExp: account.totalxp,
     combatLevel: account.combatlevel,
