@@ -87,7 +87,7 @@ router.get("/:account", (req, res) => {
         "User not found / private, please try another RuneScape account."
         );
         console.log(
-          `GET request @ /accounts/current/${req.params.account} (user not found), from ${req.ip}`
+          `GET request @ /accounts/${req.params.account} (user not found), from ${req.ip}`
           );
           return;
         }
@@ -95,7 +95,7 @@ router.get("/:account", (req, res) => {
         canSnap(account);
         // takeSnapshot(account);
         console.log(
-          `GET request @ /accounts/current/${req.params.account}, from ${req.ip}`
+          `GET request @ /accounts/${req.params.account}, from ${req.ip}`
           );
         })
         .catch((err) => {
@@ -105,11 +105,13 @@ router.get("/:account", (req, res) => {
       });
       
       router.get("/:account/all", (req, res) => {
-        res.send(getSnapshots(req.params.account));
+        const snapshots = getSnapshots(req.params.account);
+        res.send(snapshots);
+        console.log(snapshots)
         console.log(
-          `GET request @ /accounts/all/${req.params.account}, from ${req.ip}`
+          `GET request @ /accounts/${req.params.account}/all, from ${req.ip}`
         );
       });
-      
+
       module.exports = router;
       
