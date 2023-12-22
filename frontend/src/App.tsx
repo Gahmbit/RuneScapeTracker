@@ -4,6 +4,10 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { User } from "./models/User";
 
+type FormData = {
+    rsn: { value: string };
+};
+
 function App() {
     const [count, setCount] = useState(0);
 
@@ -13,9 +17,7 @@ function App() {
     const handleOnSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        const target = e.target as typeof e.target & {
-            rsn: { value: string };
-        };
+        const target = e.target as typeof e.target & FormData;
         const rsn = target.rsn.value;
 
         const response = await fetch(
@@ -23,7 +25,7 @@ function App() {
         );
         const data = await response.json();
         setuUserData(data[0]);
-        window.history.pushState('', '', `/?rsn=${rsn}`);
+        window.history.pushState("", "", `/?rsn=${rsn}`);
         setLoading(false);
     };
 
