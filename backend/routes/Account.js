@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Snapshot = require("../models/Snapshot");
-require("dotenv").config({ path: __dirname + "./../vars/.env" });
+require("dotenv").config();
 const secret = process.env.MONGO_SECRET;
 const snapshotGap = 43200000;
 
