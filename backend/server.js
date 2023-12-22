@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const accountRouter = require("./routes/Account");
-require("dotenv").config({ path: __dirname + "./vars/.env" });
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT;
