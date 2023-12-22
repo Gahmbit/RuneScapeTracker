@@ -1,4 +1,5 @@
 import Snapshot from "../models/Snapshot";
+const express = require('express');
 const mongoose = require("mongoose");
 require("dotenv").config();
 const secret = process.env.MONGO_SECRET;
@@ -15,7 +16,7 @@ const connectDB = async (secret) => {
 connectDB(secret);
 
 
-//CONTROLLER FUNCTIONS
+//CONTROLLER FUNCTIONS (need to reformat with req,res)
 async function getAccount(account) {
     const userData = await fetch(
       `https://apps.runescape.com/runemetrics/profile/profile?user=${account}&activities=20`
@@ -37,7 +38,7 @@ export function transformSnapshot(account){
 
   const accountRank = account.rank
     ? parseInt(account.rank.replace(/,/g, ""))
-    : 0;
+    : null;
   const snap = {
     name: account.name,
     nameLower: account.name.toLowerCase(),

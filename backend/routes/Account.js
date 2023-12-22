@@ -14,6 +14,7 @@ const connectDB = async (secret) => {
 
 connectDB(secret);
 
+//NEED TO REMOVE ALL FUNCTIONS FROM THIS FILE AND GRAB FROM CONTROLLERS/ACCOUNT.JS
 async function getAccount(account) {
   const userData = await fetch(
     `https://apps.runescape.com/runemetrics/profile/profile?user=${account}&activities=20`
