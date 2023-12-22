@@ -35,11 +35,18 @@ async function canSnap(account) {
   }
 }
 
-const getSnapshots = async (account) => {
-  const mySnapshots = await Snapshot.find({name: account.name}).sort({timestamp: -1})
-  if (mySnapshots === null | mySnapshots === undefined | mySnapshots === null){
+async function getSnapshots(account) {
+  const mySnapshots = await Snapshot.find({ name: account }).sort({
+    timestamp: -1,
+  });
+  if (
+    (mySnapshots === null) |
+    (mySnapshots === undefined) |
+    (mySnapshots === null)
+  ) {
     return `There are currently no snapshots for ${account.name}`;
   }
+  console.log(mySnapshots);
   return mySnapshots;
 }
 
@@ -58,13 +65,12 @@ const takeSnapshot = (account) => {
     ? parseInt(account.rank.replace(/,/g, ""))
     : 0;
   const snap = new Snapshot({
-    name: account.name,
+    name: account.name.toLowerCase(),
     rank: accountRank,
     totalSkill: account.totalskill,
     totalExp: account.totalxp,
     combatLevel: account.combatlevel,
     activities: account.activities,
-    //need to add skills to snapshots
     skills: skillsObj,
   });
   snap.save();
@@ -77,41 +83,40 @@ router.get("/", (req, res) => {
   console.log(`GET request @ /accounts/, from ${req.ip}`);
 });
 
-
 router.get("/:account", (req, res) => {
   getAccount(`${req.params.account}`)
-  .then((account) => {
-    console.log(account.name);
-    if (account.name === undefined) {
-      res.send(
-        "User not found / private, please try another RuneScape account."
+    .then((account) => {
+      console.log(account.name);
+      if (account.name === undefined) {
+        res.send(
+          "User not found / private, please try another RuneScape account."
         );
         console.log(
           `GET request @ /accounts/${req.params.account} (user not found), from ${req.ip}`
-          );
-          return;
-        }
-        res.send(account);
-        canSnap(account);
-        // takeSnapshot(account);
-        console.log(
-          `GET request @ /accounts/${req.params.account}, from ${req.ip}`
-          );
-        })
-        .catch((err) => {
-          res.send(err);
-          console.log(err);
-        });
-      });
-      
-      router.get("/:account/all", (req, res) => {
-        const snapshots = getSnapshots(req.params.account);
-        res.send(snapshots);
-        console.log(snapshots)
-        console.log(
-          `GET request @ /accounts/${req.params.account}/all, from ${req.ip}`
         );
-      });
+        return;
+      }
+      res.send(account);
+      canSnap(account);
+      // takeSnapshot(account);
+      console.log(
+        `GET request @ /accounts/${req.params.account}, from ${req.ip}`
+      );
+    })
+    .catch((err) => {
+      res.send(err);
+      console.log(err);
+    });
+});
 
-      module.exports = router;
-      
+router.get("/:account/all", (req, res) => {
+  getSnapshots(req.params.account).then((snaps) => {
+    res.send(snaps);
+    console.log(snaps);
+    console.log(
+      `GET request @ /accounts/${req.params.account}/all, from ${req.ip}`
+    );
+  });
+});
+
+module.exports = router;

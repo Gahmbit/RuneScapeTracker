@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 //routers
-app.use("/accounts", accountRouter);
+app.use("/account", accountRouter);
 
 app.listen(port, () => {
   console.log(`Express: Listening on Port ${port}`);
