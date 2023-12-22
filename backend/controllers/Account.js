@@ -1,6 +1,8 @@
 import Snapshot from "../models/Snapshot";
 const mongoose = require("mongoose");
 require("dotenv").config();
+const secret = process.env.MONGO_SECRET;
+const snapshotGap = 43200000;
 
 //INITIALIZE AND CONNECT TO DB
 mongoose.set("strictQuery", false);
@@ -37,7 +39,8 @@ export function transformSnapshot(account){
     ? parseInt(account.rank.replace(/,/g, ""))
     : 0;
   const snap = {
-    name: account.name.toLowerCase(),
+    name: account.name,
+    nameLower: account.name.toLowerCase(),
     rank: accountRank,
     totalSkill: account.totalskill,
     totalExp: account.totalxp,

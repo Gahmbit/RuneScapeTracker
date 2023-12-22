@@ -41,6 +41,10 @@ const SnapshotSchema = new Schema({
     type: String,
     required: true,
   },
+  nameLower: {
+    type: String,
+    required: true,
+  },
   timestamp: {
     type: Date,
     default: Date.now,
