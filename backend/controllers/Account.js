@@ -1,9 +1,15 @@
 const Snapshot = require("../models/Snapshot");
-// const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const secret = process.env.MONGO_SECRET;
-const snapshotGap = 43200000;
+const {
+  SUCCESS,
+  CREATED,
+  NOT_ALLOWED,
+  NOT_FOUND,
+  SERVER_ERROR,
+  SAVE_TIMEOUT,
+} = require("../consts.js");
 
 //INITIALIZE AND CONNECT TO DB
 mongoose.set("strictQuery", false);
@@ -20,16 +26,16 @@ const getCurrentStats = (req, res) => {
   getAccount(req.params.account)
     .then((rsData) => {
       if (!rsData) {
-        res.status(404);
-        res.send(`User "${req.params.account}" not found, please try again!`);
+        res
+          .status(NOT_FOUND)
+          .send(`User "${req.params.account}" not found, please try again!`);
       } else {
-        res.status(200);
-        res.send(rsData);
+        res.status(SUCCESS).send(rsData);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Database Error: Please Try Again!");
+      res.status(SERVER_ERROR).send("Database Error: Please Try Again!");
     });
 };
 
@@ -37,40 +43,41 @@ const getAllStats = (req, res) => {
   getAccount(req.params.account)
     .then((rsData) => {
       if (!rsData || rsData.nameLower === null) {
-        res.status(404);
-        res.send(`User "${req.params.account}" not found, please try again!`);
+        res
+          .status(NOT_FOUND)
+          .send(`User "${req.params.account}" not found, please try again!`);
       } else {
         getSnapshots(rsData)
           .then((snaps) => {
             if (!snaps || snaps.length === 0) {
-              res.status(404);
-              res.send(`User "${req.params.account}" has no data saved!`);
+              res
+                .status(NOT_FOUND)
+                .send(`User "${req.params.account}" has no data saved!`);
             } else {
-              res.status(200).send(snaps);
+              res.status(SUCCESS).send(snaps);
             }
           })
           .catch((err) => {
             console.error(err);
-            res.status(500).send("Database Error: Please Try Again!");
+            res.status(SERVER_ERROR).send("Database Error: Please Try Again!");
           });
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Database Error: Please Try Again!");
+      res.status(SERVER_ERROR).send("Database Error: Please Try Again!");
     });
 };
 
 const saveCurrentStats = (req, res) => {
   getAccount(req.params.account).then((rsData) => {
     if (!rsData) {
-      res.status(404).send("User not found, please try again");
+      res.status(NOT_FOUND).send("User not found, please try again");
     } else {
       canSnap(rsData)
         .then((snappable) => {
-          // console.log(snappable);
           if (snappable) {
-            res.status(201);
+            res.status(CREATED);
             takeSnapshot(rsData);
             let timestamp = Date.now();
             res.send(
@@ -80,7 +87,7 @@ const saveCurrentStats = (req, res) => {
             );
           } else {
             res
-              .status(400)
+              .status(NOT_ALLOWED)
               .send(
                 "Unable to Save Data: Can only save once every 12 hours per account, please try again later!"
               );
@@ -88,8 +95,9 @@ const saveCurrentStats = (req, res) => {
         })
         .catch((err) => {
           console.error(err);
-          res.status(500);
-          res.send("Database Error: Unable to Save Data... Sorry!");
+          res
+            .status(SERVER_ERROR)
+            .send("Database Error: Unable to Save Data... Sorry!");
         });
     }
   });
@@ -101,14 +109,16 @@ async function getAccount(account) {
     `https://apps.runescape.com/runemetrics/profile/profile?user=${account}&activities=20`
   );
   const userJSON = await userData.json();
-  // console.log(userJSON);
-  if (userJSON.error) return null;
-  else return transformSnapshot(userJSON);
+  if (userJSON.error) {
+    return null;
+  }
+  return transformSnapshot(userJSON);
 }
 
 function transformSnapshot(account) {
   const skillsArray = account.skillvalues;
   const skillsObj = {};
+
   skillsArray.forEach((skill) => {
     skillsObj[skill.id] = {
       level: skill.level,
@@ -120,7 +130,8 @@ function transformSnapshot(account) {
   const accountRank = account.rank
     ? parseInt(account.rank.replace(/,/g, ""))
     : null;
-  const snap = {
+
+  return {
     name: account.name,
     nameLower: account.name.toLowerCase(),
     rank: accountRank,
@@ -130,21 +141,13 @@ function transformSnapshot(account) {
     activities: account.activities,
     skills: skillsObj,
   };
-  return snap;
 }
 
 async function canSnap(account) {
   const latestSnap = await Snapshot.find({ nameLower: account.nameLower })
     .sort({ timestamp: -1 })
     .limit(1);
-  // await console.log(latestSnap);
-  if (
-    latestSnap[0] === undefined ||
-    Date.now() - latestSnap[0].timestamp >= snapshotGap
-  ) {
-    // takeSnapshot(account);
-    return true;
-  } else return false;
+  return !latestSnap[0] || Date.now() - latestSnap[0].timestamp >= SAVE_TIMEOUT;
 }
 
 const takeSnapshot = (snap) => {
@@ -159,15 +162,9 @@ async function getSnapshots(account) {
   }).sort({
     timestamp: -1,
   });
-  if (
-    (mySnapshots === null) |
-    (mySnapshots === undefined) |
-    (mySnapshots[0] === null)
-  ) {
-    return null;
+  if (mySnapshots && mySnapshots?.length) {
+    return mySnapshots;
   }
-  console.log(mySnapshots);
-  return mySnapshots;
 }
 
 module.exports = {
