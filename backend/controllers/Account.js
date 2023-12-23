@@ -21,10 +21,38 @@ const getCurrentStats = (req, res) => {
     .then((rsData) => {
       if (!rsData) {
         res.status(404);
-        res.send("User not found, please try again");
+        res.send(`User "${req.params.account}" not found, please try again!`);
       } else {
         res.status(200);
         res.send(rsData);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Database Error: Please Try Again!");
+    });
+};
+
+const getAllStats = (req, res) => {
+  getAccount(req.params.account)
+    .then((rsData) => {
+      if (!rsData) {
+        res.status(404);
+        res.send(`User "${req.params.account}" not found, please try again!`);
+      } else {
+        getSnapshots(rsData)
+          .then((snaps) => {
+            if (!snaps) {
+              res.status(404);
+              res.send(`User "${req.params.account}" has no data saved!`);
+            } else {
+              res.status(200).send(snaps);
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).send("Database Error: Please Try Again!");
+          });
       }
     })
     .catch((err) => {
@@ -125,7 +153,9 @@ const takeSnapshot = (snap) => {
 };
 
 async function getSnapshots(account) {
-  const mySnapshots = await Snapshot.find({ name: account }).sort({
+  const mySnapshots = await Snapshot.find({
+    nameLower: account.nameLower,
+  }).sort({
     timestamp: -1,
   });
   if (
@@ -133,7 +163,7 @@ async function getSnapshots(account) {
     (mySnapshots === undefined) |
     (mySnapshots === null)
   ) {
-    return `There are currently no snapshots for ${account.name}`;
+    return null;
   }
   console.log(mySnapshots);
   return mySnapshots;
@@ -142,4 +172,5 @@ async function getSnapshots(account) {
 module.exports = {
   getCurrentStats,
   saveCurrentStats,
+  getAllStats,
 };

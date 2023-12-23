@@ -16,6 +16,10 @@ router.post("/:account", (req, res) => {
   controller.saveCurrentStats(req, res);
 });
 
+router.get("/:account/all", (req, res) => {
+  controller.getAllStats(req, res);
+});
+
 // router.get("/:account", (req, res) => {
 //   getAccount(`${req.params.account}`)
 //     .then((account) => {
