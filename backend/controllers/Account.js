@@ -79,11 +79,8 @@ const saveCurrentStats = (req, res) => {
           if (snappable) {
             res.status(CREATED);
             takeSnapshot(rsData);
-            let timestamp = Date.now();
             res.send(
-              `Saved ${rsData.name}'s data at ${new Date(
-                timestamp
-              ).toISOString()}`
+              `Saved ${rsData.name}'s data at ${(new Date()).toISOString()}`
             );
           } else {
             res
