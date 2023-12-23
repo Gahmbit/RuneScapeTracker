@@ -1,0 +1,16 @@
+const SUCCESS = 200;
+const CREATED = 201;
+const NOT_ALLOWED = 403;
+const NOT_FOUND = 404;
+const SERVER_ERROR = 500;
+
+const SAVE_TIMEOUT = 43200000;
+
+module.exports = {
+  SUCCESS,
+  CREATED,
+  NOT_ALLOWED,
+  NOT_FOUND,
+  SERVER_ERROR,
+  SAVE_TIMEOUT,
+};
