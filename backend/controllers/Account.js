@@ -106,10 +106,9 @@ async function getAccount(account) {
     `https://apps.runescape.com/runemetrics/profile/profile?user=${account}&activities=20`
   );
   const userJSON = await userData.json();
-  if (userJSON.error) {
-    return null;
+  if (!userJSON.error) {
+    return transformSnapshot(userJSON);
   }
-  return transformSnapshot(userJSON);
 }
 
 function transformSnapshot(account) {
