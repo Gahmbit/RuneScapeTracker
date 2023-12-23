@@ -42,7 +42,7 @@ const getCurrentStats = (req, res) => {
 const getAllStats = (req, res) => {
   getAccount(req.params.account)
     .then((rsData) => {
-      if (!rsData || rsData.nameLower === null) {
+      if (!rsData?.nameLower ) {
         res
           .status(NOT_FOUND)
           .send(`User "${req.params.account}" not found, please try again!`);
