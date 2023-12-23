@@ -1,5 +1,5 @@
 const Snapshot = require("../models/Snapshot");
-const express = require("express");
+// const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const secret = process.env.MONGO_SECRET;
@@ -15,7 +15,7 @@ const connectDB = async (secret) => {
 
 connectDB(secret);
 
-//CONTROLLER FUNCTIONS (need to reformat with req,res)
+//CONTROLLER FUNCTIONS
 const getCurrentStats = (req, res) => {
   getAccount(req.params.account)
     .then((rsData) => {
@@ -36,13 +36,13 @@ const getCurrentStats = (req, res) => {
 const getAllStats = (req, res) => {
   getAccount(req.params.account)
     .then((rsData) => {
-      if (!rsData) {
+      if (!rsData || rsData.nameLower === null) {
         res.status(404);
         res.send(`User "${req.params.account}" not found, please try again!`);
       } else {
         getSnapshots(rsData)
           .then((snaps) => {
-            if (!snaps) {
+            if (!snaps || snaps.length === 0) {
               res.status(404);
               res.send(`User "${req.params.account}" has no data saved!`);
             } else {
@@ -95,6 +95,7 @@ const saveCurrentStats = (req, res) => {
   });
 };
 
+//HELPER FUNCTIONS
 async function getAccount(account) {
   const userData = await fetch(
     `https://apps.runescape.com/runemetrics/profile/profile?user=${account}&activities=20`
@@ -161,7 +162,7 @@ async function getSnapshots(account) {
   if (
     (mySnapshots === null) |
     (mySnapshots === undefined) |
-    (mySnapshots === null)
+    (mySnapshots[0] === null)
   ) {
     return null;
   }

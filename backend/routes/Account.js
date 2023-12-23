@@ -20,39 +20,4 @@ router.get("/:account/all", (req, res) => {
   controller.getAllStats(req, res);
 });
 
-// router.get("/:account", (req, res) => {
-//   getAccount(`${req.params.account}`)
-//     .then((account) => {
-//       console.log(account.name);
-//       if (account.name === undefined) {
-//         res.send(
-//           "User not found / private, please try another RuneScape account."
-//         );
-//         console.log(
-//           `GET request @ /accounts/${req.params.account} (user not found), from ${req.ip}`
-//         );
-//         return;
-//       }
-//       res.send(account);
-//       canSnap(account);
-//       console.log(
-//         `GET request @ /accounts/${req.params.account}, from ${req.ip}`
-//       );
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//       console.log(err);
-//     });
-// });
-
-// router.get("/:account/all", (req, res) => {
-//   getSnapshots(req.params.account).then((snaps) => {
-//     res.send(snaps);
-//     console.log(snaps);
-//     console.log(
-//       `GET request @ /accounts/${req.params.account}/all, from ${req.ip}`
-//     );
-//   });
-// });
-
 module.exports = router;
