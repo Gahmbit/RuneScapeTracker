@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/Account");
+const apiCache = require("apicache");
 
-router.get("/", (req, res) => {
+const cache = apiCache.middleware;
+
+router.get("/", cache("60 minutes"), (req, res) => {
   res.send("Please request a specific account!");
 });
 
-router.get("/:account", (req, res) => {
+router.get("/:account", cache("2 minutes"), (req, res) => {
   controller.getCurrentStats(req, res);
 });
 
@@ -14,7 +17,7 @@ router.post("/:account", (req, res) => {
   controller.saveCurrentStats(req, res);
 });
 
-router.get("/:account/all", (req, res) => {
+router.get("/:account/all", cache("2 minutes"), (req, res) => {
   controller.getAllStats(req, res);
 });
 

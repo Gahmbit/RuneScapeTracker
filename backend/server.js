@@ -1,23 +1,24 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const accountRouter = require("./routes/Account");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT;
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+//Rate Limiter Settings (Currently 100 requests per 10 minutes)
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 100,
 });
+
+//Middleware
+app.use(cors());
+app.use(limiter);
 
 app.get("/", (req, res) => {
   res.send("working!");
-  console.log(`GET request @ /, from ${req.ip}`);
 });
 
 //routers
