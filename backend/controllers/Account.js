@@ -42,7 +42,7 @@ const getCurrentStats = (req, res) => {
 const getAllStats = (req, res) => {
   getAccount(req.params.account)
     .then((rsData) => {
-      if (!rsData?.nameLower ) {
+      if (!rsData?.nameLower) {
         res
           .status(NOT_FOUND)
           .send(`User "${req.params.account}" not found, please try again!`);
@@ -80,7 +80,7 @@ const saveCurrentStats = (req, res) => {
             res.status(CREATED);
             takeSnapshot(rsData);
             res.send(
-              `Saved ${rsData.name}'s data at ${(new Date()).toISOString()}`
+              `Saved ${rsData.name}'s data at ${new Date().toISOString()}`
             );
           } else {
             res
@@ -114,6 +114,7 @@ async function getAccount(account) {
 function transformSnapshot(account) {
   const skillsArray = account.skillvalues;
   const skillsObj = {};
+  const activitiesArray = account.activities;
 
   skillsArray.forEach((skill) => {
     skillsObj[skill.id] = {
@@ -121,6 +122,11 @@ function transformSnapshot(account) {
       xp: skill.xp,
       rank: skill.rank,
     };
+  });
+
+  activitiesArray.forEach((act) => {
+    const type = act["text"].substring(0, 5).toLowerCase();
+    act["type"] = type; //skill, quest, kille | i kil
   });
 
   const accountRank = account.rank
@@ -134,7 +140,7 @@ function transformSnapshot(account) {
     totalSkill: account.totalskill,
     totalExp: account.totalxp,
     combatLevel: account.combatlevel,
-    activities: account.activities,
+    activities: activitiesArray,
     skills: skillsObj,
   };
 }
