@@ -125,8 +125,7 @@ function transformSnapshot(account) {
   });
 
   activitiesArray.forEach((act) => {
-    const type = act["text"].substring(0, 5).toLowerCase();
-    act["type"] = type; //skill, quest, kille | i kil
+    act["type"] = act["text"].substring(0, 5).toLowerCase(); //skill, quest, kille | i kil
   });
 
   const accountRank = account.rank
