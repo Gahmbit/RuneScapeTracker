@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 // import "./App.css";
 import "./styles/reset.css";
 import LandingPage from "./LandingPage";
-import { User } from "./models/User";
+import { User } from "../models/User";
 
 // type FormData = {
 //   rsn: { value: string };
