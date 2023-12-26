@@ -5,33 +5,33 @@ import "./App.css";
 import { User } from "./models/User";
 
 type FormData = {
-    rsn: { value: string };
+  rsn: { value: string };
 };
 
 function App() {
-    // const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
-    const [loading, setLoading] = useState<boolean>(false);
-    const [userData, setuUserData] = useState<User>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [userData, setuUserData] = useState<User>();
 
-    const handleOnSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        const target = e.target as typeof e.target & FormData;
-        const rsn = target.rsn.value;
+  const handleOnSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    const target = e.target as typeof e.target & FormData;
+    const rsn = target.rsn.value;
 
-        const response = await fetch(
-            `http://localhost:3000/account/${rsn}/all`
-        );
-        const data = await response.json();
-        setuUserData(data[0]);
-        window.history.pushState("", "", `/?rsn=${rsn}`);
-        setLoading(false);
-    };
+    const response = await fetch(
+      `https://runescape-tracker-api.onrender.com/account/${rsn}/`
+    );
+    const data = await response.json();
+    setuUserData(data);
+    window.history.pushState("", "", `/?rsn=${rsn}`);
+    setLoading(false);
+  };
 
-    return (
-        <>
-            {/* <div>
+  return (
+    <>
+      {/* <div>
                 <a href="https://vitejs.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo" />
                 </a>
@@ -44,7 +44,7 @@ function App() {
                 </a>
             </div>
             <h1>Vite + React</h1> */}
-            {/* <div className="card">
+      {/* <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
                 </button>
@@ -52,26 +52,26 @@ function App() {
                     Edit <code>src/App.tsx</code> and save to test HMR
                 </p>
             </div> */}
-            <p className="read-the-docs">Enter your Runescape username</p>
-            <form onSubmit={handleOnSubmit}>
-                <input name="rsn" />
-                <button type="submit">click me</button>
-            </form>
-            {loading && <p>LOADING</p>}
-            {userData && (
-                <div>
-                    <p>{userData.name}</p>
-                    <p>
-                        {userData.activities.map((activity) => (
-                            <ul>
-                                <li>{activity.date}</li>
-                                <li>{activity.details}</li>
-                                <li>{activity.text}</li>
-                            </ul>
-                        ))}
-                    </p>
-                    <p></p>
-                    {/* _id: string;
+      <p className="read-the-docs">Enter your Runescape username</p>
+      <form onSubmit={handleOnSubmit}>
+        <input name="rsn" />
+        <button type="submit">click me</button>
+      </form>
+      {loading && <p>LOADING</p>}
+      {userData && (
+        <div>
+          <p>{userData.name}</p>
+          <p>
+            {userData.activities.map((activity) => (
+              <ul>
+                <li>{activity.date}</li>
+                <li>{activity.details}</li>
+                <li>{activity.text}</li>
+              </ul>
+            ))}
+          </p>
+          <p></p>
+          {/* _id: string;
                     activities: { date: string; details: string; text: string }[];
                     combatLevel: number;
                     name: string;
@@ -80,10 +80,10 @@ function App() {
                     timestamp: string;
                     totalExp: number;
                     totalSkill: number; */}
-                </div>
-            )}
-        </>
-    );
+        </div>
+      )}
+    </>
+  );
 }
 
 export default App;
