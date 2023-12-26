@@ -1,12 +1,14 @@
 // import React from "react";
 import Footer from "../components/Footer";
-import "./styles/LandingPage.css";
+import Header from "../components/Header";
+import "../styles/LandingPage.css";
 
 const LandingPage = () => {
   return (
     <>
+      <Header />
       <div className="landing">
-        <div className="header">
+        <div className="heading">
           <h1>
             <span id="yellow">RuneScape</span> Tracker
           </h1>

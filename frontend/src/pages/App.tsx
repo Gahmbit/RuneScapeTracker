@@ -1,8 +1,6 @@
 import { FormEvent, useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 // import "./App.css";
-import "./styles/reset.css";
+import "../styles/reset.css";
 import LandingPage from "./LandingPage";
 import { User } from "../models/User";
 

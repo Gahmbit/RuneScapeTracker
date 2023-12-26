@@ -4,6 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <h4>
+        Made by{" "}
         <a href="https://github.com/Gahmbit/" target="_blank">
           Gahmbit
         </a>{" "}
