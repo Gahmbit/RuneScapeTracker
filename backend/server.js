@@ -14,6 +14,7 @@ const limiter = rateLimit({
 });
 
 //Middleware
+app.set("trust proxy", true);
 app.use(cors());
 app.use(limiter);
 
