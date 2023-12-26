@@ -1,0 +1,25 @@
+:root {
+  --rsyellow: #ffb600;
+  --rsblack: #1c1c1c;
+  --rsgray: #bdbdbd;
+  --rswhite: #eef0f2;
+  --rsslate: #607b7d;
+}
+
+.footer {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--rsyellow);
+  color: var(--rsblack);
+  gap: 1rem;
+  h3 {
+    color: var(--rswhite);
+  }
+  a {
+    text-decoration: none;
+    color: var(--rswhite);
+  }
+}
