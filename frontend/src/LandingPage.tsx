@@ -13,11 +13,15 @@ const LandingPage = () => {
         </div>
         <div className="searching">
           <form>
-            <input name="rsn" placeholder="Enter your RuneScape Username" />
-            <button type="submit">Search</button>
+            <div className="inputs">
+              <input name="rsn" placeholder="Enter your RuneScape Username" />
+              <button type="submit">Search</button>
+            </div>
           </form>
+          <div className="note">
+            <h2>*Only works for RuneScape 3 - sorry nostalgists!</h2>
+          </div>
         </div>
-        <h2>*Only works for RuneScape 3 - sorry nostalgists!</h2>
       </div>
       <Footer />
     </>

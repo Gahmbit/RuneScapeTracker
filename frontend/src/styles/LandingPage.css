@@ -6,6 +6,11 @@
   --rsslate: #607b7d;
 }
 
+/* body * {
+  border: 1px solid red;
+  overflow: hidden;
+} */
+
 .landing {
   display: flex;
   flex-direction: column;
@@ -35,14 +40,18 @@
 .searching {
   width: 100%;
   max-width: 700px;
-  form {
-    height: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  .inputs {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    gap: 1rem;
     input {
       width: 100%;
-      max-width: 500px;
+      max-width: 550px;
       height: 2rem;
       border-radius: 0.5rem;
       padding-left: 1rem;
@@ -58,5 +67,9 @@
     button:hover {
       cursor: pointer;
     }
+  }
+  .note {
+    display: flex;
+    justify-content: flex-start;
   }
 }
