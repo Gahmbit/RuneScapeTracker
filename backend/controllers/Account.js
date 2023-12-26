@@ -1,4 +1,4 @@
-const Snapshot = require("../models/Snapshot");
+const { Snapshot, skillMap } = require("../models/Snapshot");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const secret = process.env.MONGO_SECRET;
@@ -117,10 +117,11 @@ function transformSnapshot(account) {
   const activitiesArray = account.activities;
 
   skillsArray.forEach((skill) => {
-    skillsObj[skill.id] = {
+    skillsObj[skillMap[skill.id]] = {
       level: skill.level,
       xp: skill.xp,
       rank: skill.rank,
+      id: skill.id,
     };
   });
 
