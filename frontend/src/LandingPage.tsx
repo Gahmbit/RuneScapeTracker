@@ -1,6 +1,6 @@
 // import React from "react";
-import Footer from "./Footer";
-import "./LandingPage.css";
+import Footer from "./components/Footer";
+import "./styles/LandingPage.css";
 
 const LandingPage = () => {
   return (
