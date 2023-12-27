@@ -14,6 +14,9 @@ const LandingPage = () => {
     <>
       {/* <Header /> */}
       <div className="landing">
+        <div className="version">
+          <h3>Version 1.0.0</h3>
+        </div>
         <div className="heading">
           <h1>
             <span id="yellow">RuneScape</span> Tracker
