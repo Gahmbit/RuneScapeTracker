@@ -1,12 +1,12 @@
 // import React from "react";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+// import Header from "../components/Header";
 import "../styles/LandingPage.css";
 
 const LandingPage = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="landing">
         <div className="heading">
           <h1>
@@ -14,12 +14,10 @@ const LandingPage = () => {
           </h1>
         </div>
         <div className="searching">
-          <form>
-            <div className="inputs">
-              <input name="rsn" placeholder="Enter your RuneScape Username" />
-              <button type="submit">Search</button>
-            </div>
-          </form>
+          <div className="inputs">
+            <input name="rsn" placeholder="Enter your RuneScape Username" />
+            <button type="submit">Search</button>
+          </div>
           <div className="note">
             <h2>*Only works for RuneScape 3 - sorry nostalgists!</h2>
           </div>

@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
-// import "./App.css";
 import "../styles/reset.css";
 import LandingPage from "./LandingPage";
-import { User } from "../models/User";
+import Account from "./Account";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // type FormData = {
 //   rsn: { value: string };
@@ -62,7 +62,14 @@ function App() {
     //     </div>
     //   )}
     // </>
-    <LandingPage />
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<LandingPage />} />
+          <Route path="/*" element={<Account />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

@@ -16,21 +16,23 @@
   background-color: var(--rsslate);
   color: var(--rswhite);
   gap: 1.5rem;
-  h1 {
-    font-size: 1.1rem;
-  }
+
   a {
+    font-size: 1.1rem;
     text-decoration: none;
     color: var(--rswhite);
   }
+
   #yellow {
     color: var(--rsyellow);
   }
+
   input {
     width: 100%;
     max-width: 600px;
     height: 1.5rem;
   }
+
   button {
     width: 100%;
     max-width: 100px;
@@ -39,6 +41,7 @@
     color: var(--rswhite);
     border-radius: 0.5rem;
   }
+
   button:hover {
     cursor: pointer;
   }
