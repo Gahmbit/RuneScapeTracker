@@ -1,4 +1,4 @@
-const { Snapshot, skillMap } = require("../models/Snapshot");
+const { SnapSchema, skillMap } = require("../models/Snapshot");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const secret = process.env.MONGO_SECRET;
@@ -146,20 +146,21 @@ function transformSnapshot(account) {
 }
 
 async function canSnap(account) {
-  const latestSnap = await Snapshot.find({ nameLower: account.nameLower })
+  const latestSnap = await SnapSchema.find({ nameLower: account.nameLower })
     .sort({ timestamp: -1 })
     .limit(1);
-  return !latestSnap[0] || Date.now() - latestSnap[0].timestamp >= SAVE_TIMEOUT;
+  const temp = latestSnap[0];
+  return !temp || Date.now() - temp?.timestamp >= SAVE_TIMEOUT;
 }
 
 const takeSnapshot = (snap) => {
-  const newSnap = new Snapshot(snap);
+  const newSnap = new SnapSchema(snap);
   newSnap.save();
   console.log(`Added ${snap.name} to the database at ${Date.now()}`);
 };
 
 async function getSnapshots(account) {
-  const mySnapshots = await Snapshot.find({
+  const mySnapshots = await SnapSchema.find({
     nameLower: account.nameLower,
   }).sort({
     timestamp: -1,
