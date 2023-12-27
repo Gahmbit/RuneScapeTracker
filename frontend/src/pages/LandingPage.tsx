@@ -4,6 +4,12 @@ import Footer from "../components/Footer";
 import "../styles/LandingPage.css";
 
 const LandingPage = () => {
+  const loadAccountPage = () => {
+    const rsn = document.querySelector("#rsn").value;
+    window.history.pushState("", "", `/${rsn}`);
+    window.history.go();
+  };
+
   return (
     <>
       {/* <Header /> */}
@@ -15,8 +21,14 @@ const LandingPage = () => {
         </div>
         <div className="searching">
           <div className="inputs">
-            <input name="rsn" placeholder="Enter your RuneScape Username" />
-            <button type="submit">Search</button>
+            <input
+              id="rsn"
+              name="rsn"
+              placeholder="Enter your RuneScape Username"
+            />
+            <button type="button" onClick={loadAccountPage}>
+              Search
+            </button>
           </div>
           <div className="note">
             <h2>*Only works for RuneScape 3 - sorry nostalgists!</h2>

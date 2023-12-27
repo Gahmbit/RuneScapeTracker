@@ -66,7 +66,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<LandingPage />} />
-          <Route path="/*" element={<Account />} />
+          <Route path="/:rsn" element={<Account />} />
         </Routes>
       </BrowserRouter>
     </>
