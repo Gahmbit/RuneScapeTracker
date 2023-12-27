@@ -4,14 +4,14 @@ import Header from "../components/Header";
 import AccountDefault from "../components/AccountDefault";
 
 const Account = () => {
-  const { rsn } = useParams();
-  return (
-    <>
-      <Header />
-      <AccountDefault rsn={rsn} />
-      <Footer />
-    </>
-  );
+    const { rsn } = useParams();
+    return (
+        <>
+            <Header />
+            <AccountDefault rsn={rsn} />
+            <Footer />
+        </>
+    );
 };
 
 export default Account;
