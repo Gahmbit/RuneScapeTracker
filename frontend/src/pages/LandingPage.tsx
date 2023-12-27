@@ -5,7 +5,8 @@ import "../styles/LandingPage.css";
 
 const LandingPage = () => {
   const loadAccountPage = () => {
-    const rsn = document.querySelector("#rsn").value;
+    const rsn = (document.querySelector("#rsn") as HTMLInputElement | null)
+      ?.value;
     window.history.pushState("", "", `/${rsn}`);
     window.history.go();
   };

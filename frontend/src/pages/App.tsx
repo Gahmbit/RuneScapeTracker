@@ -1,4 +1,3 @@
-import { FormEvent, useState } from "react";
 import "../styles/reset.css";
 import LandingPage from "./LandingPage";
 import Account from "./Account";

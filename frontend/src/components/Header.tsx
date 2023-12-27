@@ -2,7 +2,8 @@ import "../styles/Header.css";
 
 const Header = () => {
   const loadAccountPage = () => {
-    const rsn = document.querySelector("#rsn").value;
+    const rsn = (document.querySelector("#rsn") as HTMLInputElement | null)
+      ?.value;
     window.history.pushState("", "", `/${rsn}`);
     window.history.go();
   };
