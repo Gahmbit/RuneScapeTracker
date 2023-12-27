@@ -1,14 +1,20 @@
 // import React from "react";
+import { useRef } from "react";
 import Footer from "../components/Footer";
 // import Header from "../components/Header";
 import "../styles/LandingPage.css";
+import { useNavigate } from "react-router-dom";
+
 
 const LandingPage = () => {
+
+  const navigate = useNavigate();
+  const searchBar = useRef<HTMLInputElement>(null);
+
   const loadAccountPage = () => {
-    const rsn = (document.querySelector("#rsn") as HTMLInputElement | null)
-      ?.value;
-    window.history.pushState("", "", `/${rsn}`);
-    window.history.go();
+    const rsn = searchBar?.current?.value;
+    const path = rsn?.replace(" ", "%20");
+    navigate(`${path}`);
   };
 
   return (
@@ -25,7 +31,7 @@ const LandingPage = () => {
         </div>
         <div className="searching">
           <div className="inputs">
-            <input
+            <input ref={searchBar}
               id="rsn"
               name="rsn"
               placeholder="Enter your RuneScape Username"
