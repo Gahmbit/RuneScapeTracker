@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 // import Header from "../components/Header";
 import "../styles/LandingPage.css";
 import { useNavigate } from "react-router-dom";
+import Version from "../components/Version";
 
 
 const LandingPage = () => {
@@ -21,9 +22,7 @@ const LandingPage = () => {
     <>
       {/* <Header /> */}
       <div className="landing">
-        <div className="version">
-          <h3>Version 1.0.0</h3>
-        </div>
+        <Version />
         <div className="heading">
           <h1>
             <span id="yellow">RuneScape</span> Tracker
