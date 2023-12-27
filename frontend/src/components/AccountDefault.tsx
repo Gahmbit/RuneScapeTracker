@@ -3,11 +3,13 @@ import "../styles/AccountDefault.css";
 
 const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
 
-  const [userData, setUserData] = useState("Loading...");
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setLoading] = useState<boolean>(true);
 
   async function getUserData(){
     const response = await fetch(`https://runescape-tracker-api.onrender.com/account/${rsn}`);
     const rsData = await response?.json();
+    setLoading(false);
     setUserData(rsData);
   }
 
@@ -17,8 +19,8 @@ const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
 
   return (
     <div className="accountDefault">
-      <h1>{rsn}'s Stats</h1>
-      <p>{JSON.stringify(userData)}</p>
+      {isLoading && <h1>Loading {rsn}'s Stats...</h1>}
+      {userData && <p>{JSON.stringify(userData)}</p>}
     </div>
   );
 };
