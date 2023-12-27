@@ -4,11 +4,11 @@ import { useRef } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
-  const searchBar = useRef(null);
+  const searchBar = useRef<HTMLInputElement>(null);
 
   const loadAccountPage = () => {
-    const rsn = searchBar.current?.value;
-    const path = rsn.replace(" ", "%20");
+    const rsn = searchBar?.current?.value;
+    const path = rsn?.replace(" ", "%20");
     navigate(`../${path}`);
   };
 

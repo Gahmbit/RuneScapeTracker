@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
 
   const navigate = useNavigate();
-  const searchBar = useRef(null);
+  const searchBar = useRef<HTMLInputElement>(null);
 
   const loadAccountPage = () => {
-    const rsn = searchBar.current?.value;
-    const path = rsn.replace(" ", "%20");
-    navigate(path);
+    const rsn = searchBar?.current?.value;
+    const path = rsn?.replace(" ", "%20");
+    navigate(`${path}`);
   };
 
   return (
