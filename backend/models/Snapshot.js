@@ -90,5 +90,5 @@ const SnapshotSchema = new Schema({
   skills: Object,
 });
 
-const SnapSchema = new mongoose.model("Snaposhot", SnapshotSchema);
+const SnapSchema = new mongoose.model("Snapshot", SnapshotSchema);
 module.exports = { SnapSchema, skillMap };
