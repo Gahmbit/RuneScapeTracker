@@ -2,6 +2,7 @@ import "../styles/reset.css";
 import LandingPage from "./LandingPage";
 import Account from "./Account";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "../styles/variables.css"
 
 // type FormData = {
 //   rsn: { value: string };

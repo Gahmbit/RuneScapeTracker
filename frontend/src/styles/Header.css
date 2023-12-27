@@ -1,11 +1,3 @@
-:root {
-  --rsyellow: #ffb600;
-  --rsblack: #1c1c1c;
-  --rsgray: #bdbdbd;
-  --rswhite: #eef0f2;
-  --rsslate: #607b7d;
-}
-
 .header {
   padding: 0 2rem;
   height: 3rem;
