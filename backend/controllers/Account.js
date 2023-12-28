@@ -16,7 +16,7 @@ mongoose.set("strictQuery", false);
 
 const connectDB = async (secret) => {
   await mongoose.connect(secret);
-  console.log("Accounts Controller: Connected to MongoDB");
+  console.log("Accounts: Connected to MongoDB");
 };
 
 connectDB(secret);
@@ -119,7 +119,7 @@ function transformSnapshot(account) {
   skillsArray.forEach((skill) => {
     skillsObj[skillMap[skill.id]] = {
       level: skill.level,
-      xp: Math.floor(skill.xp / 10), // last digit of xp is decimal but not parsed as one
+      xp: Math.floor(skill.xp / 10), // last digit of xp is decimal but not parsed as
       rank: skill.rank,
       id: skill.id,
     };
