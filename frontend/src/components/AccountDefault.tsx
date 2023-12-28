@@ -1,41 +1,32 @@
 import { useEffect, useState } from "react";
 import "../styles/AccountDefault.css";
-import { User } from "../models/User";
+import { Account } from "../types/Account.tsx";
 import AccountProfile from "./AccountProfile.tsx";
+import AccountStats from "./AccountStats.tsx";
 
 const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
-
     const [loading, setLoading] = useState<boolean>(false);
-    const [userData, setuUserData] = useState<User>();
+    const [accountData, setAccountData] = useState<Account>();
 
     useEffect(() => {
-        const loadUserData = async () => {
+        const loadaccountData = async () => {
             setLoading(true);
-
             const response = await fetch(
                 `https://runescape-tracker-api.onrender.com/account/${rsn}`
             );
             const data = await response.json();
-            setuUserData(data)
+            setAccountData(data);
             setLoading(false);
         };
-        loadUserData();
+        loadaccountData();
     }, [rsn]);
 
     return (
-        <div>
-            {userData && !loading ? (
+        <div className="account-default">
+            {accountData && !loading ? (
                 <>
-                    {/* <p>
-                        {userData.activities.map((activity) => (
-                            <ul>
-                            <li>{activity.date}</li>
-                            <li>{activity.details}</li>
-                            <li>{activity.text}</li>
-                            </ul>
-                            ))}
-                     </p> */}
-                    <AccountProfile userData={userData} />
+                    <AccountProfile accountData={accountData} />
+                    <AccountStats accountData={accountData} />
                 </>
             ) : (
                 <p>LOADING</p>

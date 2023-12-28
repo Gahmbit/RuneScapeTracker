@@ -130,6 +130,11 @@ table {
     border-spacing: 0;
 }
 
-body {
+body, html, #root {
     font-family: "Inter", "Arial", sans-serif;
+    height: 100%;
+}
+
+#root {
+    overflow-y: scroll
 }
