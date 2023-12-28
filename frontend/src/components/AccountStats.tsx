@@ -23,24 +23,24 @@ enum SortDirection {
 const AccountStats = ({ accountData }: Props) => {
     const [selectSort, setSelectedSort] = useState<SortType>(SortType.Default);
     const [selectSortDirection, setSortDirection] = useState<SortDirection>(
-        SortDirection.DESC
+        SortDirection.ASC
     );
 
     const sortFunctions = {
         [SortType.Default]: (a: AccountSkill, b: AccountSkill) =>
-            selectSortDirection === SortDirection.ASC
+            selectSortDirection === SortDirection.DESC
                 ? b.id - a.id
                 : a.id - b.id,
         [SortType.Level]: (a: AccountSkill, b: AccountSkill) =>
-            selectSortDirection === SortDirection.ASC
+            selectSortDirection === SortDirection.DESC
                 ? b.level - a.level
                 : a.level - b.level,
         [SortType.Rank]: (a: AccountSkill, b: AccountSkill) =>
-            selectSortDirection === SortDirection.ASC
+            selectSortDirection === SortDirection.DESC
                 ? b.rank - a.rank
                 : a.rank - b.rank,
         [SortType.XP]: (a: AccountSkill, b: AccountSkill) =>
-            selectSortDirection === SortDirection.ASC
+            selectSortDirection === SortDirection.DESC
                 ? b.xp - a.xp
                 : a.xp - b.xp,
     };
