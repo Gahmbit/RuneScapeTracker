@@ -13,7 +13,7 @@ import firemakingIcon from "./firemaking-icon.png";
 import fishingIcon from "./fishing-icon.png";
 import fletchingIcon from "./fletching-icon.png";
 import herbloreIcon from "./herblore-icon.png";
-import highIcore from "./high-score-icon.png";
+import highScoreIcon from "./high-score-icon.png";
 import hunterIcon from "./hunter-icon.png";
 import inventionIcon from "./invention-icon.png";
 import magicIcon from "./magic-icon.png";
@@ -46,7 +46,7 @@ const icons: { [key: string]: string } = {
     fishingIcon,
     fletchingIcon,
     herbloreIcon,
-    highIcore,
+    highScoreIcon,
     hunterIcon,
     inventionIcon,
     magicIcon,
