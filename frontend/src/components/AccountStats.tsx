@@ -1,7 +1,8 @@
-import { Account, AccountSkill, Skills } from "../models/Account";
+import { Account, AccountSkill} from "../types/Account";
 import "../styles/AccountStats.css";
 import icons from "../assets";
 import { useState } from "react";
+import { Skills } from "../types/Skills";
 
 type Props = {
     accountData: Account;

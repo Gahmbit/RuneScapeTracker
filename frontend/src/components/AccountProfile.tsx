@@ -1,4 +1,4 @@
-import { Account } from "../models/Account";
+import { Account } from "../types/Account";
 import "../styles/AccountProfile.css";
 
 type Props = {
