@@ -4,6 +4,7 @@ import { User } from "../models/User";
 import AccountProfile from "./AccountProfile.tsx";
 
 const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
+
     const [loading, setLoading] = useState<boolean>(false);
     const [userData, setuUserData] = useState<User>();
 

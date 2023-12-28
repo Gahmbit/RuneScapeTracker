@@ -3,6 +3,7 @@ import "../styles/Header.css";
 import { useRef } from "react";
 
 const Header = () => {
+
     const navigate = useNavigate();
     const searchBar = useRef<HTMLInputElement>(null);
 
