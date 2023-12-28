@@ -1,48 +1,40 @@
-:root {
-  --rsyellow: #ffb600;
-  --rsblack: #1c1c1c;
-  --rsgray: #bdbdbd;
-  --rswhite: #eef0f2;
-  --rsslate: #607b7d;
-}
-
 .header {
-  padding: 0 2rem;
-  height: 3rem;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: var(--rsslate);
-  color: var(--rswhite);
-  gap: 1.5rem;
-
-  a {
-    font-size: 1.1rem;
-    text-decoration: none;
-    color: var(--rswhite);
-  }
-
-  #yellow {
-    color: var(--rsyellow);
-  }
-
-  input {
+    padding: 0 2rem;
+    height: 3rem;
     width: 100%;
-    max-width: 600px;
-    height: 1.5rem;
-  }
-
-  button {
-    width: 100%;
-    max-width: 100px;
-    height: 2rem;
-    background-color: var(--rsyellow);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--rsslate);
     color: var(--rswhite);
-    border-radius: 0.5rem;
-  }
+    gap: 1.5rem;
 
-  button:hover {
-    cursor: pointer;
-  }
+    a {
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: var(--rswhite);
+    }
+
+    #yellow {
+        color: var(--rsyellow);
+    }
+
+    input {
+        width: 100%;
+        max-width: 600px;
+        height: 1.5rem;
+    }
+
+    button {
+        width: 100%;
+        max-width: 100px;
+        height: 2rem;
+        background-color: var(--rsyellow);
+        color: var(--rswhite);
+        border-radius: 0.5rem;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
 }

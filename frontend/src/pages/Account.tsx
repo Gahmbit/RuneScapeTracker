@@ -5,14 +5,15 @@ import AccountDefault from "../components/AccountDefault";
 import Version from "../components/Version";
 
 const Account = () => {
+
   const { rsn } = useParams();
   return (
-    <>
-      <Header />
-      <Version />
-      <AccountDefault rsn={rsn} />
-      <Footer />
-    </>
+      <>
+          <Header />
+          <Version />
+          <AccountDefault rsn={rsn} />
+          <Footer />
+      </>
   );
 };
 

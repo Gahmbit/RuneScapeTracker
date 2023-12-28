@@ -1,28 +1,47 @@
 import { useEffect, useState } from "react";
 import "../styles/AccountDefault.css";
+import { User } from "../models/User";
+import AccountProfile from "./AccountProfile.tsx";
 
 const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
 
-  const [userData, setUserData] = useState(null);
-  const [isLoading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [userData, setuUserData] = useState<User>();
 
-  async function getUserData(){
-    const response = await fetch(`https://runescape-tracker-api.onrender.com/account/${rsn}`);
-    const rsData = await response?.json();
-    setLoading(false);
-    setUserData(rsData);
-  }
+    useEffect(() => {
+        const loadUserData = async () => {
+            setLoading(true);
 
-  useEffect(() => {
-    getUserData();
-  }, []);
+            const response = await fetch(
+                `https://runescape-tracker-api.onrender.com/account/${rsn}`
+            );
+            const data = await response.json();
+            setuUserData(data)
+            setLoading(false);
+        };
+        loadUserData();
+    }, [rsn]);
 
-  return (
-    <div className="accountDefault">
-      {isLoading && <h1>Loading {rsn}'s Stats...</h1>}
-      {userData && <p>{JSON.stringify(userData)}</p>}
-    </div>
-  );
+    return (
+        <div>
+            {userData && !loading ? (
+                <>
+                    {/* <p>
+                        {userData.activities.map((activity) => (
+                            <ul>
+                            <li>{activity.date}</li>
+                            <li>{activity.details}</li>
+                            <li>{activity.text}</li>
+                            </ul>
+                            ))}
+                     </p> */}
+                    <AccountProfile userData={userData} />
+                </>
+            ) : (
+                <p>LOADING</p>
+            )}
+        </div>
+    );
 };
 
 export default AccountDefault;
