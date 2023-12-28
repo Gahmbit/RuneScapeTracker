@@ -1,6 +1,6 @@
 const { SnapSchema, skillMap } = require("../models/Snapshot");
 const mongoose = require("mongoose");
-require("dotenv").config();
+require("dotenv").config({path: "../.env"});
 const secret = process.env.MONGO_SECRET;
 const {
   SUCCESS,
@@ -119,14 +119,14 @@ function transformSnapshot(account) {
   skillsArray.forEach((skill) => {
     skillsObj[skillMap[skill.id]] = {
       level: skill.level,
-      xp: skill.xp,
+      xp: Math.floor(skill.xp / 10), // last digit of xp is decimal but not parsed as one
       rank: skill.rank,
       id: skill.id,
     };
   });
 
   activitiesArray.forEach((act) => {
-    act["type"] = act["text"].substring(0, 5).toLowerCase(); //skill, quest, kille | i kil
+    act["type"] = act["text"].substring(0, 5).toLowerCase(); //skill, quest, kille | i kil, after (item drops)
   });
 
   const accountRank = account.rank
