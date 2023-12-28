@@ -3,6 +3,7 @@ import "../styles/AccountDefault.css";
 import { Account } from "../types/Account.tsx";
 import AccountProfile from "./AccountProfile.tsx";
 import AccountStats from "./AccountStats.tsx";
+import AccountAdventurersLog from "./AccountAdventurersLog.tsx";
 
 const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -27,6 +28,7 @@ const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
                 <>
                     <AccountProfile accountData={accountData} />
                     <AccountStats accountData={accountData} />
+                    <AccountAdventurersLog accountData={accountData} />
                 </>
             ) : (
                 <p>LOADING</p>
