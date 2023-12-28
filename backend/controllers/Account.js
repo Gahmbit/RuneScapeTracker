@@ -16,7 +16,7 @@ mongoose.set("strictQuery", false);
 
 const connectDB = async (secret) => {
   await mongoose.connect(secret);
-  console.log("Accounts Controller: Connected to MongoDB");
+  console.log("Accounts: Connected to MongoDB");
 };
 
 connectDB(secret);

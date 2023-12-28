@@ -17,6 +17,10 @@ const limiter = rateLimit({
 app.set("trust proxy", 1);
 app.use(cors());
 app.use(limiter);
+app.use((req, res, next) => {
+  console.log(`${req.method} request at ${req.url}, from ${req.ip}`);
+  next();
+})
 
 app.get("/", (req, res) => {
   res.send("working!");
