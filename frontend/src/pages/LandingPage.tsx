@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import "../styles/LandingPage.css";
 import { useNavigate } from "react-router-dom";
 import Version from "../components/Version";
-
+import Button from "../components/Button";
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -28,17 +28,17 @@ const LandingPage = () => {
                     </h1>
                 </div>
                 <div className="searching">
-                    <div className="inputs">
-                        <input
-                            ref={searchBar}
-                            id="rsn"
-                            name="rsn"
-                            placeholder="Enter your RuneScape Username"
-                        />
-                        <button type="button" onClick={loadAccountPage}>
-                            Search
-                        </button>
-                    </div>
+                    <form onSubmit={loadAccountPage}>
+                        <div className="inputs">
+                            <input
+                                ref={searchBar}
+                                id="rsn"
+                                name="rsn"
+                                placeholder="Enter your RuneScape Username"
+                            />
+                            <Button onClick={loadAccountPage}>Search</Button>
+                        </div>
+                    </form>
                     <div className="note">
                         <h2>
                             *Only works for RuneScape 3 - sorry nostalgists!

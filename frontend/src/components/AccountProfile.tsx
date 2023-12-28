@@ -1,39 +1,39 @@
-import { User } from "../models/User";
+import { Account } from "../models/Account";
 import "../styles/AccountProfile.css";
 
 type Props = {
-    userData: User;
+    accountData: Account;
 };
 
-const AccountProfile = ({ userData }: Props) => {
+const AccountProfile = ({ accountData }: Props) => {
     return (
         <div className="account-profile">
-            <div className="account-profile__picuture-image">
+            <div className="account-profile__picture-image">
                 <img
-                    src={`http://secure.runescape.com/m=avatar-rs/${userData.name}/chat.png`}
+                    src={`http://secure.runescape.com/m=avatar-rs/${accountData.name}/chat.png`}
                 />
             </div>
-            <div className="account-profile__rsn">{userData.name}</div>
+            <div className="account-profile__rsn">{accountData.name}</div>
             <div className="account-profile__total-skill">
                 <div className="account-profile__total-skill__label">
                     Total Skill
                 </div>
                 <div className="account-profile__total-skill__value">
-                    {userData.totalSkill.toLocaleString()}
+                    {accountData.totalSkill.toLocaleString()}
                 </div>
             </div>
             <div className="account-profile__stats-grid">
                 <div className="account-profile__stats-name">Combat Level</div>
                 <div className="account-profile__stats-value">
-                    {userData.combatLevel.toLocaleString()}
+                    {accountData.combatLevel.toLocaleString()}
                 </div>
                 <div className="account-profile__stats-name">Rank</div>
                 <div className="account-profile__stats-value">
-                    {userData.rank.toLocaleString()}
+                    {accountData.rank.toLocaleString()}
                 </div>
                 <div className="account-profile__stats-name">XP</div>
                 <div className="account-profile__stats-value">
-                    {userData.totalExp.toLocaleString()}
+                    {accountData.totalExp.toLocaleString()}
                 </div>
             </div>
         </div>

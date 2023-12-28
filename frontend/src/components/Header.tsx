@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { useRef } from "react";
+import Button from "./Button";
 
 const Header = () => {
-
     const navigate = useNavigate();
     const searchBar = useRef<HTMLInputElement>(null);
 
@@ -24,9 +24,7 @@ const Header = () => {
                 name="rsn"
                 placeholder="Enter your RuneScape Username"
             />
-            <button type="button" onClick={loadAccountPage}>
-                Search
-            </button>
+            <Button onClick={loadAccountPage}>Search</Button>
         </div>
     );
 };

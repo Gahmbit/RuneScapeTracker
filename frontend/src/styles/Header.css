@@ -21,20 +21,15 @@
 
     input {
         width: 100%;
-        max-width: 600px;
-        height: 1.5rem;
-    }
-
-    button {
-        width: 100%;
-        max-width: 100px;
+        max-width: 550px;
         height: 2rem;
-        background-color: var(--rsyellow);
-        color: var(--rswhite);
         border-radius: 0.5rem;
+        padding-left: 1rem;
+        border: 0;
+
+        &:focus {
+            outline: none;
+        }
     }
 
-    button:hover {
-        cursor: pointer;
-    }
 }

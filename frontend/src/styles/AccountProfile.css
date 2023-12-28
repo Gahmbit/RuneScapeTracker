@@ -1,7 +1,7 @@
 .account-profile {
     background-color: var(--rsslate);
     width: 250px;
-    margin: 30px;
+    height: auto;
     padding: 20px;
     border-radius: 8px;
     display: flex;
@@ -9,7 +9,7 @@
     align-items: center;
     gap: 16px;
 
-    .account-profile__picuture-image {
+    .account-profile__picture-image {
         background-color: var(--rswhite);
         border-radius: 50%;
         display: flex;

@@ -60,25 +60,12 @@
             border-radius: 0.5rem;
             padding-left: 1rem;
             border: 0;
+
+            &:focus {
+                outline: none;
+            }
         }
 
-        input:focus {
-            outline: none;
-        }
-
-        button {
-            width: 100%;
-            max-width: 100px;
-            height: 2rem;
-            background-color: var(--rsyellow);
-            color: var(--rswhite);
-            border-radius: 0.5rem;
-            border: 0;
-        }
-
-        button:hover {
-            cursor: pointer;
-        }
     }
 
     .note {
