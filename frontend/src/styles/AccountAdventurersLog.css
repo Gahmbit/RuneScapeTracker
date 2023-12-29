@@ -48,6 +48,7 @@
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
+                max-width: 300px;
                 gap: 6px;
                 background-color: var(--rsslate);
                 padding: 8px 16px;

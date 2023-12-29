@@ -13,7 +13,7 @@ const AccountAdventurersLog = ({ accountData }: Props) => {
 
     return (
         <div className="account-activities">
-            <div className="account-activities__title">Activity Log</div>
+            <div className="account-activities__title">Adventurer's Log</div>
             <div className="account-activities__list">
                 {activities.map((activity) => {
                     return (
