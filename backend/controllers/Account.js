@@ -126,7 +126,20 @@ function transformSnapshot(account) {
   });
 
   activitiesArray.forEach((act) => {
-    act["type"] = act["text"].substring(0, 5).toLowerCase(); //skill, quest, kille | i kil, after (item drops)
+    const activityType = act["text"].substring(0, 5).toLowerCase();  //skill, quest, kille | i kil, after (item drops)
+    switch (activityType){
+      case "level":
+        act["type"] = "skill";
+      case "quest":
+        act["type"] = "quest";
+      case "kille":
+      case "i kil":
+        act["type"] = "combat";
+      case "after":
+        act["type"] = "drop";
+      default:
+        act["type"] = "achievement";
+    }
   });
 
   const accountRank = account.rank
