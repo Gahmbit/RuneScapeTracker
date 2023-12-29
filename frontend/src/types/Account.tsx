@@ -9,7 +9,7 @@ export type AccountSkill = {
 
 export type Account = {
     _id: string;
-    activities: { date: string; details: string; text: string }[];
+    activities: { date: string; details: string; text: string; type: string }[];
     combatLevel: number;
     name: string;
     rank: number;

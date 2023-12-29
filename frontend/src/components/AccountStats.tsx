@@ -1,4 +1,4 @@
-import { Account, AccountSkill} from "../types/Account";
+import { Account, AccountSkill } from "../types/Account";
 import "../styles/AccountStats.css";
 import icons from "../assets";
 import { useState } from "react";
@@ -35,10 +35,23 @@ const AccountStats = ({ accountData }: Props) => {
             selectSortDirection === SortDirection.DESC
                 ? b.level - a.level
                 : a.level - b.level,
-        [SortType.Rank]: (a: AccountSkill, b: AccountSkill) =>
-            selectSortDirection === SortDirection.DESC
+        [SortType.Rank]: (a: AccountSkill, b: AccountSkill) => {
+            if (selectSortDirection === SortDirection.ASC && a.rank === 0) {
+                return 1;
+            }
+            if (selectSortDirection === SortDirection.ASC && b.rank === 0) {
+                return -1;
+            }
+            if (selectSortDirection === SortDirection.DESC && a.rank === 0) {
+                return -1;
+            }
+            if (selectSortDirection === SortDirection.DESC && b.rank === 0) {
+                return 1;
+            }
+            return selectSortDirection === SortDirection.DESC
                 ? b.rank - a.rank
-                : a.rank - b.rank,
+                : a.rank - b.rank;
+        },
         [SortType.XP]: (a: AccountSkill, b: AccountSkill) =>
             selectSortDirection === SortDirection.DESC
                 ? b.xp - a.xp
@@ -72,6 +85,14 @@ const AccountStats = ({ accountData }: Props) => {
             <select
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                     setSelectedSort(e.target.value as SortType);
+                    if (
+                        e.target.value === SortType.Level ||
+                        e.target.value === SortType.XP
+                    ) {
+                        setSortDirection(SortDirection.DESC);
+                    } else {
+                        setSortDirection(SortDirection.ASC);
+                    }
                 }}
             >
                 <option value="default">Default</option>

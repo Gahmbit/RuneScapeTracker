@@ -1,0 +1,81 @@
+.account-activities {
+    background-color: var(--rsgray);
+    width: 500px;
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    .account-activities__title {
+        color: var(--rsblack);
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .account-activities__list {
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        gap: 16px;
+
+        .account-activities__stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+
+            .account-activities__stat__icon {
+                height: 30px;
+                width: 30px;
+                flex-grow: 0;
+            }
+            .account-activities__stat__date {
+                display: flex;
+                height: 12px;
+                width: 82px;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--rsyellow);
+                color: var(--rsblack);
+                -webkit-box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+                box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+                padding: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+            }
+            .account-activities__stat__info {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                max-width: 300px;
+                gap: 6px;
+                background-color: var(--rsslate);
+                padding: 8px 16px;
+                -webkit-box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+                box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+                border-radius: 16px;
+
+                .account-activities__stat__info__name {
+                    font-size: 16px;
+                    overflow: visible;
+                }
+
+                .account-activities__stat__info__details {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 12px;
+
+                    div {
+                        width: 100%;
+
+                        .account-activities__stat__info__rank-xp__label {
+                            color: var(--rsyellow);
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
