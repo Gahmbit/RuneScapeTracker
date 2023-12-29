@@ -162,41 +162,13 @@ function transformSnapshot(account) {
         activities: activitiesArray,
         skills: skillsObj,
     };
-  });
-
-  activitiesArray.forEach((act) => {
-    const activityType = act["text"].substring(0, 5).toLowerCase();  //skill, quest, kille | i kil, after (item drops)
-    switch (activityType){
-      case "level":
-        act["type"] = "skill";
-      case "quest":
-        act["type"] = "quest";
-      case "kille":
-      case "i kil":
-        act["type"] = "combat";
-      case "after":
-        act["type"] = "drop";
-      default:
-        act["type"] = "achievement";
-    }
-  });
-
-  const accountRank = account.rank
-    ? parseInt(account.rank.replace(/,/g, ""))
-    : null;
-
-  return {
-    name: account.name,
-    nameLower: account.name.toLowerCase(),
-    rank: accountRank,
-    totalSkill: account.totalskill,
-    totalExp: account.totalxp,
-    combatLevel: account.combatlevel,
-    activities: activitiesArray,
-    skills: skillsObj,
-  };
-
 }
+
+const takeSnapshot = (snap) => {
+    const newSnap = new SnapSchema(snap);
+    newSnap.save();
+    console.log(`Added ${snap.name} to the database at ${Date.now()}`);
+};
 
 async function canSnap(account) {
     const latestSnap = await SnapSchema.find({ nameLower: account.nameLower })
@@ -205,12 +177,6 @@ async function canSnap(account) {
     const temp = latestSnap[0];
     return !temp || Date.now() - temp?.timestamp >= SAVE_TIMEOUT;
 }
-
-const takeSnapshot = (snap) => {
-    const newSnap = new SnapSchema(snap);
-    newSnap.save();
-    console.log(`Added ${snap.name} to the database at ${Date.now()}`);
-};
 
 async function getSnapshots(account) {
     const mySnapshots = await SnapSchema.find({
