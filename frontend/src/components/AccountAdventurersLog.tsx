@@ -9,7 +9,6 @@ type Props = {
 
 const AccountAdventurersLog = ({ accountData }: Props) => {
     const activities = accountData.activities;
-    console.log(activities);
 
     return (
         <div className="account-activities">
