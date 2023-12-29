@@ -1,4 +1,4 @@
-.account-stats {
+.account-activities {
     background-color: var(--rsgray);
     width: 500px;
     border-radius: 8px;
@@ -7,47 +7,47 @@
     gap: 20px;
     flex-direction: column;
 
-    .account-stats__title {
+    .account-activities__title {
         color: var(--rsblack);
         font-weight: 600;
         font-size: 20px;
     }
 
-    .account-stats__list {
+    .account-activities__list {
         display: flex;
         flex-direction: column;
         overflow: visible;
         gap: 16px;
 
-        .account-stats__stat {
+        .account-activities__stat {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px;
             background-color: var(--rsslate);
             padding: 8px 16px;
-            -webkit-box-shadow: 3px 3px 11px -1px rgba(0,0,0,0.58); 
-            box-shadow: 3px 3px 11px -1px rgba(0,0,0,0.58);
+            -webkit-box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+            box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
             border-radius: 16px;
 
-            .account-stats__stat__icon {
+            .account-activities__stat__icon {
                 height: 30px;
                 width: 30px;
                 flex-grow: 0;
             }
 
-            .account-stats__stat__info {
+            .account-activities__stat__info {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
                 gap: 6px;
 
-                .account-stats__stat__info__name {
+                .account-activities__stat__info__name {
                     font-size: 16px;
                     overflow: visible;
                 }
 
-                .account-stats__stat__info__rank-xp {
+                .account-activities__stat__info__rank-xp {
                     display: flex;
                     flex-direction: row;
                     font-size: 12px;
@@ -55,7 +55,7 @@
                     div {
                         width: 50%;
 
-                        .account-stats__stat__info__rank-xp__label {
+                        .account-activities__stat__info__rank-xp__label {
                             color: var(--rsyellow);
                             font-size: 10px;
                         }
@@ -63,18 +63,18 @@
                 }
             }
 
-            .account-stats__stat__level {
+            .account-activities__stat__level {
                 flex-grow: 0;
                 display: flex;
                 justify-content: flex-end;
                 align-items: flex-end;
 
-                .account-stats__stat__level__label {
+                .account-activities__stat__level__label {
                     color: var(--rsyellow);
                     font-size: 14px;
                 }
 
-                .account-stats__stat__level__value {
+                .account-activities__stat__level__value {
                     width: 69px;
                     text-align: right;
 

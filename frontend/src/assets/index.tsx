@@ -23,6 +23,7 @@ import prayerIcon from "./prayer-icon.png";
 import questIcon from "./quest-icon.png";
 import rangedIcon from "./ranged-icon.png";
 import runecraftingIcon from "./runecrafting-icon.png";
+import skillIcon from "./skill-icon.png";
 import slayerIcon from "./slayer-icon.png";
 import smithingIcon from "./smithing-icon.png";
 import strengthIcon from "./strength-icon.png";
@@ -56,6 +57,7 @@ const icons: { [key: string]: string } = {
     questIcon,
     rangedIcon,
     runecraftingIcon,
+    skillIcon,
     slayerIcon,
     smithingIcon,
     strengthIcon,
