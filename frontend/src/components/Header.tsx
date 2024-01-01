@@ -14,18 +14,20 @@ const Header = () => {
     };
 
     return (
-        <div className="header">
-            <a href="/">
-                <span id="yellow">Runescape</span> Tracker
-            </a>
-            <input
-                ref={searchBar}
-                id="rsn"
-                name="rsn"
-                placeholder="Enter your RuneScape Username"
-            />
-            <Button onClick={loadAccountPage}>Search</Button>
-        </div>
+        <form onSubmit={loadAccountPage}>
+            <div className="header">
+                <a href="/">
+                    <span id="yellow">Runescape</span> Tracker
+                </a>
+                <input
+                    ref={searchBar}
+                    id="rsn"
+                    name="rsn"
+                    placeholder="Enter your RuneScape Username"
+                />
+                <Button onClick={loadAccountPage}>Search</Button>
+            </div>
+        </form>
     );
 };
 
