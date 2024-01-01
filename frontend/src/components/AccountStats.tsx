@@ -114,7 +114,13 @@ const AccountStats = ({ accountData }: Props) => {
             <div className="account-stats__list">
                 {skills.map((skill) => {
                     return (
-                        <div className="account-stats__stat">
+                        <div
+                            className={
+                                skill.level === skill.maxSkillLevel
+                                    ? "account-stats__stat max"
+                                    : "account-stats__stat"
+                            }
+                        >
                             <img
                                 src={
                                     icons[
