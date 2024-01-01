@@ -1,0 +1,15 @@
+.button {
+    width: 100%;
+    max-width: 100px;
+    height: 2rem;
+    background-color: var(--rsyellow);
+    color: var(--rsblack);
+    border-radius: 0.5rem;
+    border: 0;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--rsblack);
+        color: var(--rsyellow);
+    }
+}

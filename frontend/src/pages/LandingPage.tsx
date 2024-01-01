@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import "../styles/LandingPage.css";
 import { useNavigate } from "react-router-dom";
 import Version from "../components/Version";
-import Button from "../components/Button";
+import Button from "../components/SearchButton";
 
 const LandingPage = () => {
     const navigate = useNavigate();

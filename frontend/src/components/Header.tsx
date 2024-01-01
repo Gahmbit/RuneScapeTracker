@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { useRef } from "react";
-import Button from "./Button";
+import Button from "./SearchButton";
 
 const Header = () => {
     const navigate = useNavigate();
