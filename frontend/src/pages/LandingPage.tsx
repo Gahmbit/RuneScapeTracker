@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import "../styles/LandingPage.css";
 import { useNavigate } from "react-router-dom";
 import Version from "../components/Version";
-import Button from "../components/SearchButton";
+import SearchButton from "../components/SearchButton";
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -36,7 +36,9 @@ const LandingPage = () => {
                                 name="rsn"
                                 placeholder="Enter your RuneScape Username"
                             />
-                            <Button onClick={loadAccountPage}>Search</Button>
+                            <SearchButton onClick={loadAccountPage}>
+                                Search
+                            </SearchButton>
                         </div>
                     </form>
                     <div className="note">
