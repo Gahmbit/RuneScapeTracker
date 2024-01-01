@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/AccountDefault.css";
 import { Account } from "../types/Account.tsx";
-import AccountProfile from "./AccountProfile.tsx";
+import AccountProfileSnaps from "./AccountProfileSnaps.tsx";
 import AccountStats from "./AccountStats.tsx";
 import AccountAdventurersLog from "./AccountAdventurersLog.tsx";
 
@@ -26,7 +26,7 @@ const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
         <div className="account-default">
             {accountData && !loading ? (
                 <>
-                    <AccountProfile accountData={accountData} />
+                    <AccountProfileSnaps accountData={accountData} />
                     <AccountStats accountData={accountData} />
                     <AccountAdventurersLog accountData={accountData} />
                 </>
