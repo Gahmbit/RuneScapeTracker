@@ -9,5 +9,7 @@
 
     &:hover {
         cursor: pointer;
+        background-color: var(--rsblack);
+        color: var(--rsyellow);
     }
 }
