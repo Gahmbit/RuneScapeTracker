@@ -1,5 +1,5 @@
 import AccountProfile from "./AccountProfile";
-import AccountSnaps from "./AccountSnaps";
+import AccountSnaps from "./AccountSnapControls";
 import { Account } from "../types/Account";
 import "../styles/AccountProfileSnaps.css";
 

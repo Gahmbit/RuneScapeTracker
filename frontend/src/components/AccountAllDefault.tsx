@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import "../styles/AccountDefault.css";
 import { Account } from "../types/Account.tsx";
 import AccountProfile from "./AccountProfile.tsx";
-import AccountStats from "./AccountStats.tsx";
+import AccountAllSnaps from "./AccountAllSnaps.tsx";
 import axios from "axios";
 
 const AccountAllDefault = ({ rsn }: { rsn: string | undefined }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [accountData, setAccountData] = useState<Account>();
-    const [allSaves, setAllSaves] = useState("");
+    const [allSaves, setAllSaves] = useState<Array<Account> | undefined>(
+        undefined
+    );
 
     useEffect(() => {
         const loadaccountData = async () => {
@@ -41,7 +43,7 @@ const AccountAllDefault = ({ rsn }: { rsn: string | undefined }) => {
             {accountData && !loading ? (
                 <>
                     <AccountProfile accountData={accountData} />
-                    <AccountStats accountData={accountData} />
+                    <AccountAllSnaps allSaves={allSaves} />
                 </>
             ) : (
                 <p>LOADING</p>
