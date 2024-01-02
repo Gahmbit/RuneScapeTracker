@@ -11,25 +11,11 @@ type Props = {
 const AccountSnaps = ({ accountData }: Props) => {
     const navigate = useNavigate();
     const [saveReturn, setSaveReturn] = useState("");
-    const [allSave, setAllSaves] = useState("");
 
     const loadAllPage = () => {
         const rsn = accountData.name;
-        const path = rsn?.replace(" ", "%20");
+        const path = rsn?.replace(" ", "%20").toLowerCase();
         navigate(`/${path}/all`);
-    };
-
-    const loadAllSaves = async () => {
-        axios
-            .get(
-                `https://runescape-tracker-api.onrender.com/account/${accountData.name}/all`
-            )
-            .then((res) => {
-                setAllSaves(res.data);
-            })
-            .catch((err) => {
-                setAllSaves(err.response.data);
-            });
     };
 
     const saveData = async () => {
