@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { useRef } from "react";
-import Button from "./Button";
+import SearchButton from "./SearchButton";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -14,18 +14,20 @@ const Header = () => {
     };
 
     return (
-        <div className="header">
-            <a href="/">
-                <span id="yellow">Runescape</span> Tracker
-            </a>
-            <input
-                ref={searchBar}
-                id="rsn"
-                name="rsn"
-                placeholder="Enter your RuneScape Username"
-            />
-            <Button onClick={loadAccountPage}>Search</Button>
-        </div>
+        <form onSubmit={loadAccountPage}>
+            <div className="header">
+                <a href="/">
+                    <span id="yellow">Runescape</span> Tracker
+                </a>
+                <input
+                    ref={searchBar}
+                    id="rsn"
+                    name="rsn"
+                    placeholder="Enter your RuneScape Username"
+                />
+                <SearchButton onClick={loadAccountPage}>Search</SearchButton>
+            </div>
+        </form>
     );
 };
 

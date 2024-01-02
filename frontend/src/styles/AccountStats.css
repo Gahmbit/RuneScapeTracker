@@ -26,9 +26,13 @@
             gap: 16px;
             background-color: var(--rsslate);
             padding: 8px 16px;
-            -webkit-box-shadow: 3px 3px 11px -1px rgba(0,0,0,0.58); 
-            box-shadow: 3px 3px 11px -1px rgba(0,0,0,0.58);
+            -webkit-box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+            box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
             border-radius: 16px;
+
+            &:hover {
+                background-color: var(--rsblack);
+            }
 
             .account-stats__stat__icon {
                 height: 30px;
@@ -80,6 +84,31 @@
 
                     span {
                         font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .max {
+            color: var(--rsblack);
+            background-color: var(--rsyellow);
+
+            &:hover {
+                background-color: var(--rsblack);
+                color: var(--rsyellow);
+            }
+
+            .account-stats__stat__level {
+                .account-stats__stat__level__label {
+                    color: var(--rsslate);
+                }
+            }
+            .account-stats__stat__info {
+                .account-stats__stat__info__rank-xp {
+                    div {
+                        .account-stats__stat__info__rank-xp__label {
+                            color: var(--rsslate);
+                        }
                     }
                 }
             }

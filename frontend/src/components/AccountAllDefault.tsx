@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import "../styles/AccountDefault.css";
 import { Account } from "../types/Account.tsx";
-import AccountProfileSnaps from "./AccountProfileSnaps.tsx";
-import AccountStats from "./AccountStats.tsx";
-import AccountAdventurersLog from "./AccountAdventurersLog.tsx";
+import AccountProfile from "./AccountProfile.tsx";
+import AccountAllSnaps from "./AccountAllSnaps.tsx";
+import axios from "axios";
 
-const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
+const AccountAllDefault = ({ rsn }: { rsn: string | undefined }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [accountData, setAccountData] = useState<Account>();
+    const [allSaves, setAllSaves] = useState<Array<Account> | undefined>(
+        undefined
+    );
 
     useEffect(() => {
         const loadaccountData = async () => {
@@ -19,16 +22,28 @@ const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
             setAccountData(data);
             setLoading(false);
         };
+        const loadAllSaves = async () => {
+            axios
+                .get(
+                    `https://runescape-tracker-api.onrender.com/account/${rsn}/all`
+                )
+                .then((res) => {
+                    setAllSaves(res.data);
+                })
+                .catch((err) => {
+                    setAllSaves(err.response.data);
+                });
+        };
         loadaccountData();
+        loadAllSaves();
     }, [rsn]);
 
     return (
         <div className="account-default">
             {accountData && !loading ? (
                 <>
-                    <AccountProfileSnaps accountData={accountData} />
-                    <AccountStats accountData={accountData} />
-                    <AccountAdventurersLog accountData={accountData} />
+                    <AccountProfile accountData={accountData} />
+                    <AccountAllSnaps allSaves={allSaves} />
                 </>
             ) : (
                 <p>LOADING</p>
@@ -37,4 +52,4 @@ const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
     );
 };
 
-export default AccountDefault;
+export default AccountAllDefault;

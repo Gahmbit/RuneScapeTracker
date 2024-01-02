@@ -1,0 +1,61 @@
+.account-snaps {
+    background-color: var(--rsslate);
+    width: 250px;
+    height: auto;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .account-snaps__picture-image {
+        background-color: var(--rswhite);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 130px;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .account-snaps__rsn {
+        font-size: 30px;
+        overflow: visible;
+    }
+
+    .account-snaps__total-skill {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 18px;
+
+        .account-snaps__total-skill__label {
+            color: var(--rsyellow);
+        }
+    }
+
+    .account-snaps__stats-grid {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 8px;
+        font-size: 14px;
+
+        .account-snaps__stats-name {
+            text-align: left;
+            color: var(--rsyellow);
+        }
+
+        .account-snaps__stats-value {
+            text-align: right;
+        }
+    }
+}
