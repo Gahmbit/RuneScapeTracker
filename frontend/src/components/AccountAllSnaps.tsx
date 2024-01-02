@@ -1,4 +1,4 @@
-import "../styles/AccountStats.css";
+import "../styles/AccountAllSnaps.css";
 import icons from "../assets";
 import { Account } from "../types/Account.tsx";
 
@@ -15,8 +15,27 @@ const AccountStats = ({ allSaves }: Props) => {
             <div className="account-stats__list">
                 {allSaves?.map((save) => {
                     return (
-                        <div className="save-snap" key={save?.timestamp}>
-                            <h1>{save?.timestamp}</h1>
+                        <div className="save-snap" key={save?._id}>
+                            <div className="save-snap_details">
+                                <img
+                                    src={icons["skillIcon"]}
+                                    alt="Total Skill"
+                                />
+                                <h2>{save.totalSkill}</h2>
+                                <img
+                                    src={icons["killIcon"]}
+                                    alt="Combat Level"
+                                />
+                                <h2>{save.combatLevel}</h2>
+                                <img src={icons["highScoreIcon"]} alt="Rank" />
+                                <h2>{save.rank.toLocaleString()}</h2>
+                                <img
+                                    src={icons["achievementIcon"]}
+                                    alt="Total XP"
+                                />
+                                <h2>{save.totalExp.toLocaleString()}</h2>
+                            </div>
+                            <h1>{new Date(save?.timestamp).toUTCString()}</h1>
                         </div>
                     );
                 })}
