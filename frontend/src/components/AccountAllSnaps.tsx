@@ -15,7 +15,7 @@ const AccountStats = ({ allSaves }: Props) => {
             <div className="account-stats__list">
                 {allSaves?.map((save) => {
                     return (
-                        <div className="save-snap">
+                        <div className="save-snap" key={save?.timestamp}>
                             <h1>{save?.timestamp}</h1>
                         </div>
                     );
