@@ -1,0 +1,143 @@
+.account-stats {
+    background-color: var(--rsgray);
+    width: 500px;
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    .account-stats__title {
+        color: var(--rsblack);
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .account-stats__list {
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        gap: 16px;
+
+
+
+        .save-snap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            background-color: var(--rsslate);
+            padding: 8px 16px;
+            -webkit-box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+            box-shadow: 3px 3px 11px -1px rgba(0, 0, 0, 0.58);
+            border-radius: 16px;
+            &:hover {
+                background-color: var(--rsblack);
+            }
+
+           
+
+            .save-snap_button {
+                background: transparent;
+                border: none;
+                outline: none;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                padding: 0;
+
+                &:hover {
+                    background-color: var(--rsblack);
+                    color: var(--rsyellow);
+                }
+            }
+
+            .save-snap_details {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .account-stats__stat__icon {
+                height: 30px;
+                width: 30px;
+                flex-grow: 0;
+            }
+
+            .account-stats__stat__info {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                gap: 6px;
+
+                .account-stats__stat__info__name {
+                    font-size: 16px;
+                    overflow: visible;
+                }
+
+                .account-stats__stat__info__rank-xp {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 12px;
+
+                    div {
+                        width: 50%;
+
+                        .account-stats__stat__info__rank-xp__label {
+                            color: var(--rsyellow);
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+
+            .account-stats__stat__level {
+                flex-grow: 0;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                .account-stats__stat__level__label {
+                    color: var(--rsyellow);
+                    font-size: 14px;
+                }
+
+                .account-stats__stat__level__value {
+                    width: 69px;
+                    text-align: right;
+
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .max {
+            color: var(--rsblack);
+            background-color: var(--rsyellow);
+
+            &:hover {
+                background-color: var(--rsblack);
+                color: var(--rsyellow);
+            }
+
+            .account-stats__stat__level {
+                .account-stats__stat__level__label {
+                    color: var(--rsslate);
+                }
+            }
+            .account-stats__stat__info {
+                .account-stats__stat__info__rank-xp {
+                    div {
+                        .account-stats__stat__info__rank-xp__label {
+                            color: var(--rsslate);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
