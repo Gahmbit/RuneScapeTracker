@@ -10,8 +10,8 @@ type Props = {
 const AccountStats = ({ allSaves }: Props) => {
     const navigate = useNavigate();
 
-    const goTo = (id: string) => {
-        navigate(id);
+    const goTo = (id: string, name: string) => {
+        navigate(`../${name.toLowerCase()}/${id}`);
     };
 
     return (
@@ -25,7 +25,9 @@ const AccountStats = ({ allSaves }: Props) => {
                         <div className="save-snap" key={save?._id}>
                             <button
                                 className="save-snap_button"
-                                // onClick={goTo(save?._id)}
+                                onClick={() =>
+                                    goTo(save?._id, save?.name.toLowerCase())
+                                }
                             >
                                 <div className="save-snap_details">
                                     <img
