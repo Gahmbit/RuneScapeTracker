@@ -12,6 +12,7 @@ function App() {
                 <Route index element={<LandingPage />} />
                 <Route path="/:rsn" element={<Account />} />
                 <Route path="/:rsn/all" element={<AccountAll />} />
+                <Route path="/:rsn/:save" element={<AccountAll />} />
             </Routes>
         </BrowserRouter>
     );
