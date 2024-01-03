@@ -52,7 +52,7 @@ const AccountStats = ({ allSaves }: Props) => {
                                     <h2>{save.totalExp.toLocaleString()}</h2>
                                 </div>
                                 <h1>
-                                    {new Date(save?.timestamp).toUTCString()}
+                                    {new Date(save.timestamp).toLocaleString()}
                                 </h1>
                             </button>
                         </div>
