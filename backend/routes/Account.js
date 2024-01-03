@@ -13,12 +13,16 @@ router.get("/:account", cache("2 minutes"), (req, res) => {
     controller.getCurrentStats(req, res);
 });
 
-router.post("/:account", (req, res) => {
+router.post("/:account", cache("1 hours"), (req, res) => {
     controller.saveCurrentStats(req, res);
 });
 
 router.get("/:account/all", cache("2 minutes"), (req, res) => {
     controller.getAllStats(req, res);
+});
+
+router.get("/:account/:id", cache("2 minutes"), (req, res) => {
+    controller.getOneSnapshot(req, res);
 });
 
 module.exports = router;

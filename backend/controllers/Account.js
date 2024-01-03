@@ -1,6 +1,6 @@
 const { SnapSchema, skillMap } = require("../models/Snapshot");
 const mongoose = require("mongoose");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 const secret = process.env.MONGO_SECRET;
 const {
     SUCCESS,
@@ -189,8 +189,14 @@ async function getSnapshots(account) {
     }
 }
 
+async function getOneSnapshot(req, res) {
+    const mySnap = await SnapSchema.findOne({ _id: req.params.id });
+    res.status(SUCCESS).send(mySnap);
+}
+
 module.exports = {
     getCurrentStats,
     saveCurrentStats,
     getAllStats,
+    getOneSnapshot,
 };
