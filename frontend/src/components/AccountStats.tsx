@@ -120,6 +120,7 @@ const AccountStats = ({ accountData }: Props) => {
                                     ? "account-stats__stat max"
                                     : "account-stats__stat"
                             }
+                            key={skill.skillName}
                         >
                             <img
                                 src={

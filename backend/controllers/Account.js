@@ -1,6 +1,6 @@
 const { SnapSchema, skillMap } = require("../models/Snapshot");
 const mongoose = require("mongoose");
-require("dotenv").config({ path: "./.env" });
+require("dotenv").config({ path: "../.env" });
 const secret = process.env.MONGO_SECRET;
 const {
     SUCCESS,

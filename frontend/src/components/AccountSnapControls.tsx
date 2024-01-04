@@ -38,10 +38,14 @@ const AccountSnaps = ({ accountData }: Props) => {
                 <div className="account-snaps_title">Save / Load Data</div>
             )}
             {!accountData._id && (
-                <button onClick={saveData}>Save Current Data</button>
+                <button className="snap-button" onClick={saveData}>
+                    Save Current Data
+                </button>
             )}
             <p className="save-return">{saveReturn}</p>
-            <button onClick={loadAllPage}>View All Data</button>
+            <button className="snap-button" onClick={loadAllPage}>
+                View All Data
+            </button>
         </div>
     );
 };
