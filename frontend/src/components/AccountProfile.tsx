@@ -14,6 +14,12 @@ const AccountProfile = ({ accountData }: Props) => {
                 />
             </div>
             <div className="account-profile__rsn">{accountData.name}</div>
+            {accountData._id && (
+                <div className="account-profile_savedate">
+                    Save Date:{" "}
+                    {new Date(accountData.timestamp).toLocaleString()}
+                </div>
+            )}
             <div className="account-profile__total-skill">
                 <div className="account-profile__total-skill__label">
                     Total Skill

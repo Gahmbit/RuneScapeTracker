@@ -14,8 +14,10 @@ const AccountDefault = ({ rsn }: { rsn: string | undefined }) => {
             setLoading(true);
             const response = await fetch(
                 `https://runescape-tracker-api.onrender.com/account/${rsn}`
+                // `http://localhost:3000/account/${rsn}`
             );
             const data = await response.json();
+            console.log(data);
             setAccountData(data);
             setLoading(false);
         };
