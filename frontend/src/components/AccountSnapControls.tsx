@@ -10,7 +10,7 @@ type Props = {
 
 const AccountSnaps = ({ accountData }: Props) => {
     const navigate = useNavigate();
-    const [saveReturn, setSaveReturn] = useState("");
+    const [saveReturn, setSaveReturn] = useState<string>("");
 
     const loadAllPage = () => {
         const rsn = accountData.name;
@@ -25,10 +25,10 @@ const AccountSnaps = ({ accountData }: Props) => {
                 `https://runescape-tracker-api.onrender.com/account/${accountData.name}`
             )
             .then((res) => {
-                setSaveReturn(res.data);
+                setSaveReturn(res?.data);
             })
             .catch((err) => {
-                setSaveReturn(err.response.data);
+                setSaveReturn(err?.response.data);
             });
     };
 
@@ -38,12 +38,13 @@ const AccountSnaps = ({ accountData }: Props) => {
                 <div className="account-snaps_title">Save / Load Data</div>
             )}
             {!accountData._id && (
-                <button className="snap-button" onClick={saveData}>
+                <button className="snap-button" onClick={() => saveData()}>
                     Save Current Data
                 </button>
             )}
             <p className="save-return">{saveReturn}</p>
-            <button className="snap-button" onClick={loadAllPage}>
+
+            <button className="snap-button" onClick={() => loadAllPage()}>
                 View All Data
             </button>
         </div>
