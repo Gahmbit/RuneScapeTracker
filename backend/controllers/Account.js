@@ -88,14 +88,14 @@ const saveCurrentStats = (req, res) => {
                         );
                     } else {
                         res.status(NOT_ALLOWED).send(
-                            "Unable to Save Data: Can only save once every 12 hours per account, please try again later!"
+                            '"Unable to Save Data: Can only save once every 12 hours per account, please try again later!"'
                         );
                     }
                 })
                 .catch((err) => {
                     console.error(err);
                     res.status(SERVER_ERROR).send(
-                        "Database Error: Unable to Save Data... Sorry!"
+                        '"Database Error: Unable to Save Data... Sorry!"'
                     );
                 });
         }
