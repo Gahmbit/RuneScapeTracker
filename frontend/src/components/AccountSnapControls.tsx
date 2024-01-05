@@ -11,6 +11,7 @@ type Props = {
 const AccountSnaps = ({ accountData }: Props) => {
     const navigate = useNavigate();
     const [saveReturn, setSaveReturn] = useState<string>("");
+    const [saving, setSaving] = useState<boolean>(false);
 
     const loadAllPage = () => {
         const rsn = accountData.name;
@@ -19,16 +20,19 @@ const AccountSnaps = ({ accountData }: Props) => {
     };
 
     const saveData = async () => {
+        setSaving(true);
         setSaveReturn("Trying to save...");
         axios
             .post(
                 `https://runescape-tracker-api.onrender.com/account/${accountData.name}`
             )
             .then((res) => {
-                setSaveReturn(res?.data);
+                console.log(res.data);
+                setSaveReturn(`${res.data}`);
             })
             .catch((err) => {
-                setSaveReturn(err?.response.data);
+                console.log(err);
+                setSaveReturn(`${err?.response.data}`);
             });
     };
 
@@ -42,7 +46,7 @@ const AccountSnaps = ({ accountData }: Props) => {
                     Save Current Data
                 </button>
             )}
-            <p className="save-return">{saveReturn}</p>
+            {saving && <p className="save-return">{saveReturn}</p>}
             <button className="snap-button" onClick={() => loadAllPage()}>
                 View All Data
             </button>

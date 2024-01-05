@@ -14,7 +14,7 @@ const AccountProfile = ({ accountData }: Props) => {
                 />
             </div>
             <div className="account-profile__rsn">{accountData.name}</div>
-            {accountData._id && (
+            {accountData?._id && (
                 <div className="account-profile_savedate">
                     Save Date:{" "}
                     {new Date(accountData.timestamp).toLocaleString()}
@@ -25,21 +25,21 @@ const AccountProfile = ({ accountData }: Props) => {
                     Total Skill
                 </div>
                 <div className="account-profile__total-skill__value">
-                    {accountData.totalSkill.toLocaleString()}
+                    {accountData.totalSkill?.toLocaleString()}
                 </div>
             </div>
             <div className="account-profile__stats-grid">
                 <div className="account-profile__stats-name">Combat Level</div>
                 <div className="account-profile__stats-value">
-                    {accountData.combatLevel.toLocaleString()}
+                    {accountData.combatLevel?.toLocaleString()}
                 </div>
                 <div className="account-profile__stats-name">Rank</div>
                 <div className="account-profile__stats-value">
-                    {accountData.rank.toLocaleString()}
+                    {accountData.rank?.toLocaleString()}
                 </div>
                 <div className="account-profile__stats-name">XP</div>
                 <div className="account-profile__stats-value">
-                    {accountData.totalExp.toLocaleString()}
+                    {accountData.totalExp?.toLocaleString()}
                 </div>
             </div>
         </div>

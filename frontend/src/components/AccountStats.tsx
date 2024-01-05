@@ -58,7 +58,7 @@ const AccountStats = ({ accountData }: Props) => {
                 : a.xp - b.xp,
     };
 
-    const skills = Object.keys(accountData.skills)
+    const skills = Object.keys(accountData?.skills)
         .map((key) => {
             return {
                 skillName: key,
@@ -139,13 +139,13 @@ const AccountStats = ({ accountData }: Props) => {
                                         <span className="account-stats__stat__info__rank-xp__label">
                                             Rank&nbsp;&nbsp;
                                         </span>
-                                        {skill.rank.toLocaleString()}
+                                        {skill.rank?.toLocaleString()}
                                     </div>
                                     <div>
                                         <span className="account-stats__stat__info__rank-xp__label">
                                             XP&nbsp;&nbsp;
                                         </span>
-                                        {skill.xp.toLocaleString()}
+                                        {skill.xp?.toLocaleString()}
                                     </div>
                                 </div>
                             </div>
