@@ -46,7 +46,9 @@ const AccountSnaps = ({ accountData }: Props) => {
                     Save Current Data
                 </button>
             )}
+
             {saving && <p className="save-return">{saveReturn}</p>}
+
             <button className="snap-button" onClick={() => loadAllPage()}>
                 View All Data
             </button>
