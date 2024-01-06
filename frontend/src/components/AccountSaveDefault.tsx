@@ -23,7 +23,6 @@ const AccountSaveDefault = ({
                 `https://runescape-tracker-api.onrender.com/account/${rsn}/${save}`
             );
             const data = await response.json();
-            console.log(data);
             setAccountData(data);
             setLoading(false);
         };

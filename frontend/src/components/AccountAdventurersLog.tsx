@@ -17,7 +17,7 @@ const AccountAdventurersLog = ({ accountData }: Props) => {
                 {activities.map((activity) => {
                     return (
                         <div
-                            key={activity.details}
+                            key={activity.details + activity.date}
                             className="account-activities__stat"
                         >
                             <img
