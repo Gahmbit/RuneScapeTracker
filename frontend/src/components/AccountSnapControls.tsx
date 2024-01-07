@@ -27,11 +27,9 @@ const AccountSnaps = ({ accountData }: Props) => {
                 `https://runescape-tracker-api.onrender.com/account/${accountData.name}`
             )
             .then((res) => {
-                console.log(res);
-                setSaveReturn(`${res}`);
+                setSaveReturn(`${res.data}`);
             })
             .catch((err) => {
-                console.log(err.response.data);
                 setSaveReturn(`${err?.response.data}`);
             });
     };

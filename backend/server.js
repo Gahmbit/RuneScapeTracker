@@ -7,9 +7,9 @@ require("dotenv").config({ path: "./.env" });
 const app = express();
 const port = process.env.PORT;
 
-//Rate Limiter Settings (Currently 60 requests per 10 minutes)
+//Rate Limiter Settings (Currently 60 requests per minute)
 const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000,
+    windowMs: 60 * 1000,
     max: 60,
 });
 
