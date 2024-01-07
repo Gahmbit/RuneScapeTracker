@@ -13,7 +13,7 @@ router.get("/:account", cache("2 minutes"), (req, res) => {
     controller.getCurrentStats(req, res);
 });
 
-router.post("/:account", cache("1 hours"), (req, res) => {
+router.post("/:account", cache("2 minutes"), (req, res) => {
     controller.saveCurrentStats(req, res);
 });
 
